@@ -6,7 +6,9 @@ struct ContentView: View {
     @State var reset: Bool = false
     
     @State var gridColors: [[Color]] = Array(repeating: Array(repeating: .white, count: 16), count: 16)
-    @State var gridNumbers: [[Int]] = [[5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5], [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5], [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5], [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5], [5,5,5,5,0,0,0,5,5,0,0,0,5,5,5,5], [5,5,5,0,1,1,1,0,0,1,1,1,0,5,5,5], [5,5,5,0,1,1,1,1,1,1,1,1,0,5,5,5], [5,5,5,0,1,1,1,1,1,1,1,1,0,5,5,5], [5,5,5,5,0,1,1,1,1,1,1,0,5,5,5,5], [5,5,5,5,5,0,1,1,1,1,0,5,5,5,5,5], [5,5,5,5,5,5,0,1,1,0,5,5,5,5,5,5], [5,5,5,5,5,5,5,0,0,5,5,5,5,5,5,5], [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5], [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5], [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5], [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5],]
+    @State var gridNumbers: [[Int]] = [[5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5], [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5], [5,5,5,5,5,5,0,0,0,0,0,5,5,5,5,5], [5,5,5,5,5,5,5,5,5,5,5,0,5,5,5,5], [5,5,5,5,5,5,5,5,5,5,5,5,0,5,5,5], [5,5,5,5,5,5,5,5,5,5,5,5,5,0,5,5], [5,5,5,5,5,5,5,0,0,5,5,5,5,0,5,5], [5,5,5,5,5,5,0,5,5,0,5,5,5,0,5,5], [5,5,5,5,5,5,0,5,5,0,5,5,5,0,5,5], [5,5,5,5,5,5,5,0,0,5,5,5,5,0,5,5], [5,5,5,5,5,5,5,5,5,5,5,5,5,0,5,5], [5,5,5,5,5,5,5,5,5,5,5,5,0,5,5,5], [5,5,5,5,5,5,5,5,5,5,5,0,5,5,5,5], [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5], [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5], [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5]]
+    
+    var colorPalette : [Color] = [Color.black, Color.red, Color.white]
     
     @State var painting: Bool = false
     
@@ -45,7 +47,7 @@ struct ContentView: View {
                                 SquareComponent(corParaPintar: $curColor,
                                                 reset: $reset,
                                                 posicao: (linha: i, coluna: j),
-                                                pixelGrid: $gridColors, numberGrid: $gridNumbers)
+                                                pixelGrid: $gridColors, numberGrid: $gridNumbers, viewModel: viewModel)
                                     .frame(width: squareSize, height: squareSize)
                                     .border(Color.gray, width: 0.3)
                                     .padding(-3.95)
@@ -113,11 +115,10 @@ struct ContentView: View {
                     .foregroundColor(.gray.opacity(0.2))
                     .cornerRadius(6)
                 HStack {
-                    PalleteSquare(color: .black, curColor: $curColor)
-                    PalleteSquare(color: .red, curColor: $curColor)
-                    PalleteSquare(color: .blue, curColor: $curColor)
-                    PalleteSquare(color: .green, curColor: $curColor)
-                    PalleteSquare(color: .white, curColor: $curColor)
+                    ForEach(0..<colorPalette.count){ i in
+                        PalleteSquare(color: colorPalette[i], curColor: $curColor)
+                    }
+
                 }
             }
         }

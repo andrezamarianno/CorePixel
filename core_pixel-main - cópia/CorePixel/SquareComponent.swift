@@ -7,6 +7,8 @@ struct SquareComponent: View {
     @Binding var pixelGrid: [[Color]]
     @Binding var numberGrid : [[Int]]
     
+    var viewModel : CorePixelViewModel
+    
     var body: some View {
         ZStack {
             Rectangle()
@@ -20,8 +22,11 @@ struct SquareComponent: View {
                 .onChange(of: reset) {
                     resetarCor()
                 }
-                
-            Text(numberGrid[posicao.linha][posicao.coluna] != 5 ? String(numberGrid[posicao.linha][posicao.coluna]) : "")
+            
+            if(viewModel.getColorID(_color: pixelGrid[posicao.linha][posicao.coluna]) != numberGrid[posicao.linha][posicao.coluna]){
+                Text(numberGrid[posicao.linha][posicao.coluna] != 5 ? String(numberGrid[posicao.linha][posicao.coluna]) : "")
+                    .foregroundColor(Color.black.opacity(0.5))
+            }
             
         }
     }
