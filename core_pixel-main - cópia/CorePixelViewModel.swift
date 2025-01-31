@@ -66,12 +66,15 @@ class CorePixelViewModel: ObservableObject {
         case Color.blue:
             return 2
             
-        case Color.green:
+        case Color.pink:
             return 3
             
-        case Color.white:
+        case Color.brown:
             return 4
             
+        case Color.white:
+            return 5
+
         default:
             return 99
         }
@@ -89,9 +92,12 @@ class CorePixelViewModel: ObservableObject {
             return Color.blue
             
         case 3:
-            return Color.green
+            return Color.pink
             
         case 4:
+            return Color.brown
+            
+        case 5:
             return Color.white
             
         default:

@@ -6,9 +6,11 @@ struct ContentView: View {
     @State var reset: Bool = false
     
     @State var gridColors: [[Color]] = Array(repeating: Array(repeating: .white, count: 16), count: 16)
-    @State var gridNumbers: [[Int]] = [[5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5], [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5], [5,5,5,5,5,5,0,0,0,0,0,5,5,5,5,5], [5,5,5,5,5,5,5,5,5,5,5,0,5,5,5,5], [5,5,5,5,5,5,5,5,5,5,5,5,0,5,5,5], [5,5,5,5,5,5,5,1,5,5,5,5,5,0,5,5], [5,5,5,5,5,5,5,0,0,5,5,5,5,0,5,5], [5,5,5,5,5,5,0,5,5,0,5,5,5,0,5,5], [5,5,5,5,5,5,0,5,5,0,5,5,5,0,5,5], [5,5,5,5,5,5,5,0,0,5,5,5,5,0,5,5], [5,5,5,5,5,5,5,5,5,5,5,5,5,0,5,5], [5,5,5,5,5,5,5,5,5,5,5,5,0,5,5,5], [5,5,5,5,5,5,5,5,5,5,5,0,5,5,5,5], [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5], [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5], [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5]]
+
+    @State var gridNumbers: [[Int]] = [[5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5], [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5], [5,5,5,5,5,0,0,0,0,0,0,5,5,5,5,5], [5,5,5,5,0,4,4,3,3,3,4,0,5,5,5,5], [5,5,5,0,4,4,3,3,3,3,4,4,0,5,5,5], [5,5,0,4,4,3,3,3,3,3,3,4,4,0,5,5], [5,5,0,4,2,2,3,0,0,3,2,3,3,0,5,5], [5,5,0,3,3,3,0,5,5,0,3,3,3,0,5,5], [5,5,0,3,3,3,0,5,5,0,3,3,4,0,5,5], [5,5,0,4,3,3,3,0,0,3,2,3,3,0,5,5], [5,5,0,4,4,2,3,3,3,3,3,4,4,0,5,5], [5,5,5,0,4,4,3,3,3,3,4,4,0,5,5,5], [5,5,5,5,0,3,3,3,4,4,4,0,5,5,5,5], [5,5,5,5,5,0,0,0,0,0,0,5,5,5,5,5], [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5], [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5]]
+
     
-    var colorPalette : [Color] = [Color.black, Color.red, Color.white]
+    var colorPalette : [Color] = [Color.black, Color.pink, Color.blue, Color.brown, Color.white]
     
     @State var painting: Bool = false
     
@@ -116,12 +118,13 @@ struct ContentView: View {
                     .cornerRadius(6)
                 HStack {
                     ForEach(0..<colorPalette.count){ i in
-                        PalleteSquare(color: colorPalette[i], curColor: $curColor)
+                        PalleteSquare(color: colorPalette[i], curColor: $curColor, viewModel: viewModel)
                             .overlay (
                                 Text("\(viewModel.getColorID(_color: colorPalette[i]))")
                                     .foregroundStyle(viewModel.getColorID(_color: colorPalette[i]) == 0 ? Color.white : Color.black)
                                 
                             )
+
                     }
 
                 }
