@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A5DFEC32D4D46B600DD17BB /* CatalogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5DFEC22D4D46B600DD17BB /* CatalogoView.swift */; };
+		4A5DFEC52D4D495C00DD17BB /* Quantico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A5DFEC42D4D495C00DD17BB /* Quantico-Regular.ttf */; };
+		4A5DFEC82D4D513F00DD17BB /* MeusDesenhosComponente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5DFEC72D4D513F00DD17BB /* MeusDesenhosComponente.swift */; };
+		4A5DFECA2D4D6FDD00DD17BB /* DesenhoDoDiaComponente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5DFEC92D4D6FDD00DD17BB /* DesenhoDoDiaComponente.swift */; };
+		4A68FCAB2D513254009A995F /* MeusFavoritosComponente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A68FCAA2D513254009A995F /* MeusFavoritosComponente.swift */; };
+		4A68FCAE2D5135E9009A995F /* MaoLivreComponente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A68FCAD2D5135E9009A995F /* MaoLivreComponente.swift */; };
+		4A68FCB02D5136CF009A995F /* PreviewDesenho.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A68FCAF2D5136CF009A995F /* PreviewDesenho.swift */; };
 		4A8E27C42D4C0E690013AB14 /* PixelArtModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4A8E27C22D4C0E690013AB14 /* PixelArtModel.xcdatamodeld */; };
 		4A8E27C62D4C0EF20013AB14 /* CorePixelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8E27C52D4C0EF20013AB14 /* CorePixelModel.swift */; };
 		4A8E27C82D4C11970013AB14 /* CorePixelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8E27C72D4C11970013AB14 /* CorePixelViewModel.swift */; };
@@ -21,6 +28,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A5DFEC22D4D46B600DD17BB /* CatalogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogoView.swift; sourceTree = "<group>"; };
+		4A5DFEC42D4D495C00DD17BB /* Quantico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quantico-Regular.ttf"; path = "../../../Downloads/Quantico/Quantico-Regular.ttf"; sourceTree = "<group>"; };
+		4A5DFEC62D4D49C700DD17BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4A5DFEC72D4D513F00DD17BB /* MeusDesenhosComponente.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeusDesenhosComponente.swift; sourceTree = "<group>"; };
+		4A5DFEC92D4D6FDD00DD17BB /* DesenhoDoDiaComponente.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesenhoDoDiaComponente.swift; sourceTree = "<group>"; };
+		4A68FCAA2D513254009A995F /* MeusFavoritosComponente.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeusFavoritosComponente.swift; sourceTree = "<group>"; };
+		4A68FCAD2D5135E9009A995F /* MaoLivreComponente.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaoLivreComponente.swift; sourceTree = "<group>"; };
+		4A68FCAF2D5136CF009A995F /* PreviewDesenho.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDesenho.swift; sourceTree = "<group>"; };
 		4A8E27C32D4C0E690013AB14 /* PixelArtModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PixelArtModel.xcdatamodel; sourceTree = "<group>"; };
 		4A8E27C52D4C0EF20013AB14 /* CorePixelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorePixelModel.swift; sourceTree = "<group>"; };
 		4A8E27C72D4C11970013AB14 /* CorePixelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorePixelViewModel.swift; sourceTree = "<group>"; };
@@ -47,9 +62,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A68FCAC2D513265009A995F /* Componentes */ = {
+			isa = PBXGroup;
+			children = (
+				4A5DFEC72D4D513F00DD17BB /* MeusDesenhosComponente.swift */,
+				4AA1E53E2D4C291A008B5F94 /* botaoSalvarComponente.swift */,
+				4A68FCAA2D513254009A995F /* MeusFavoritosComponente.swift */,
+				4A5DFEC92D4D6FDD00DD17BB /* DesenhoDoDiaComponente.swift */,
+				4A68FCAD2D5135E9009A995F /* MaoLivreComponente.swift */,
+				4A68FCAF2D5136CF009A995F /* PreviewDesenho.swift */,
+			);
+			path = Componentes;
+			sourceTree = "<group>";
+		};
 		BE9F2E312D4AAE58008C3422 = {
 			isa = PBXGroup;
 			children = (
+				4A5DFEC42D4D495C00DD17BB /* Quantico-Regular.ttf */,
 				4A8E27C52D4C0EF20013AB14 /* CorePixelModel.swift */,
 				4A8E27C72D4C11970013AB14 /* CorePixelViewModel.swift */,
 				4A8E27C22D4C0E690013AB14 /* PixelArtModel.xcdatamodeld */,
@@ -69,12 +98,14 @@
 		BE9F2E3C2D4AAE58008C3422 /* CorePixel */ = {
 			isa = PBXGroup;
 			children = (
+				4A5DFEC62D4D49C700DD17BB /* Info.plist */,
 				BE9F2E3D2D4AAE58008C3422 /* CorePixelApp.swift */,
+				4A5DFEC22D4D46B600DD17BB /* CatalogoView.swift */,
 				BE9F2E3F2D4AAE58008C3422 /* ContentView.swift */,
 				BE9F2E4C2D4AAE80008C3422 /* PalleteSquare.swift */,
 				BE9F2E4E2D4AAE99008C3422 /* SquareComponent.swift */,
 				4AA1E53A2D4C1CF6008B5F94 /* ListaDeDesenhos.swift */,
-				4AA1E53E2D4C291A008B5F94 /* botaoSalvarComponente.swift */,
+				4A68FCAC2D513265009A995F /* Componentes */,
 				BE9F2E432D4AAE59008C3422 /* CorePixel.entitlements */,
 				BE9F2E412D4AAE59008C3422 /* Assets.xcassets */,
 				BE9F2E442D4AAE59008C3422 /* Preview Content */,
@@ -148,6 +179,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A5DFEC52D4D495C00DD17BB /* Quantico-Regular.ttf in Resources */,
 				BE9F2E462D4AAE59008C3422 /* Preview Assets.xcassets in Resources */,
 				BE9F2E422D4AAE59008C3422 /* Assets.xcassets in Resources */,
 			);
@@ -160,14 +192,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A68FCAB2D513254009A995F /* MeusFavoritosComponente.swift in Sources */,
+				4A68FCB02D5136CF009A995F /* PreviewDesenho.swift in Sources */,
 				BE9F2E4F2D4AAE99008C3422 /* SquareComponent.swift in Sources */,
 				BE9F2E402D4AAE58008C3422 /* ContentView.swift in Sources */,
 				4AA1E53F2D4C291A008B5F94 /* botaoSalvarComponente.swift in Sources */,
 				4A8E27C42D4C0E690013AB14 /* PixelArtModel.xcdatamodeld in Sources */,
 				BE9F2E3E2D4AAE58008C3422 /* CorePixelApp.swift in Sources */,
+				4A68FCAE2D5135E9009A995F /* MaoLivreComponente.swift in Sources */,
 				BE9F2E4D2D4AAE80008C3422 /* PalleteSquare.swift in Sources */,
+				4A5DFEC32D4D46B600DD17BB /* CatalogoView.swift in Sources */,
+				4A5DFEC82D4D513F00DD17BB /* MeusDesenhosComponente.swift in Sources */,
 				4A8E27C82D4C11970013AB14 /* CorePixelViewModel.swift in Sources */,
 				4A8E27C62D4C0EF20013AB14 /* CorePixelModel.swift in Sources */,
+				4A5DFECA2D4D6FDD00DD17BB /* DesenhoDoDiaComponente.swift in Sources */,
 				4AA1E53B2D4C1CF6008B5F94 /* ListaDeDesenhos.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,6 +339,7 @@
 				DEVELOPMENT_TEAM = ZUG6CNLA9K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CorePixel/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -338,6 +377,7 @@
 				DEVELOPMENT_TEAM = ZUG6CNLA9K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CorePixel/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
