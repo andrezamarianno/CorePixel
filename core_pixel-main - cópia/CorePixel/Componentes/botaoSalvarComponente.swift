@@ -6,15 +6,15 @@ struct botaoSalvar: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .frame(width: 170, height: 50)
-                .cornerRadius(30)
+                .frame(width: 250, height: 60)
+                .cornerRadius(10)
                 .foregroundColor(Color("VerdeSalvar"))
               
             
             Text("Salvar")
                 .foregroundStyle(Color.white)
                 .bold()
-                .font(.system(size: 20))
+                .font(.custom("Quantico-Regular", size: 30))
         }
         .onTapGesture {
             action()
@@ -27,3 +27,4 @@ struct botaoSalvar: View {
         print("chama o alerta de salvar")
     })
 }
+
