@@ -57,6 +57,10 @@ class CorePixelViewModel: ObservableObject {
     
     func getColorID(_color : Color) -> Int{
         switch(_color){
+            
+        case Color.white:
+            return -1
+            
         case Color.black:
             return 0
             
@@ -66,15 +70,18 @@ class CorePixelViewModel: ObservableObject {
         case Color.blue:
             return 2
             
-        case Color.pink:
+        case Color.yellow:
             return 3
             
-        case Color.brown:
+        case Color.orange:
             return 4
             
-        case Color.white:
+        case Color.green:
             return 5
-
+            
+        case Color.purple:
+            return 6
+            
         default:
             return 99
         }
@@ -82,6 +89,10 @@ class CorePixelViewModel: ObservableObject {
     
     func getIDColor(_id : Int) -> Color{
         switch(_id){
+            
+        case -1:
+            return Color.white
+        
         case 0:
             return Color.black
             
@@ -92,14 +103,17 @@ class CorePixelViewModel: ObservableObject {
             return Color.blue
             
         case 3:
-            return Color.pink
+            return Color.yellow
             
         case 4:
-            return Color.brown
+            return Color.orange
             
         case 5:
-            return Color.white
+            return Color.green
             
+        case 6:
+            return Color.purple
+        
         default:
             return Color.white
         }

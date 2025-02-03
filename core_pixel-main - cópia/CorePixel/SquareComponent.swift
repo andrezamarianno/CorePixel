@@ -24,7 +24,7 @@ struct SquareComponent: View {
                 }
             
             if(viewModel.getColorID(_color: pixelGrid[posicao.linha][posicao.coluna]) != numberGrid[posicao.linha][posicao.coluna]){
-                Text(numberGrid[posicao.linha][posicao.coluna] != 5 ? String(numberGrid[posicao.linha][posicao.coluna]) : "")
+                Text(numberGrid[posicao.linha][posicao.coluna] != -1 ? String(numberGrid[posicao.linha][posicao.coluna]) : "")
                     .foregroundColor(Color.black.opacity(0.5))
             }
             

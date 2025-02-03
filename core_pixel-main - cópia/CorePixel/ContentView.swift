@@ -7,10 +7,10 @@ struct ContentView: View {
     
     @State var gridColors: [[Color]] = Array(repeating: Array(repeating: .white, count: 16), count: 16)
 
-    @State var gridNumbers: [[Int]] = [[5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5], [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5], [5,5,5,5,5,0,0,0,0,0,0,5,5,5,5,5], [5,5,5,5,0,4,4,3,3,3,4,0,5,5,5,5], [5,5,5,0,4,4,3,3,3,3,4,4,0,5,5,5], [5,5,0,4,4,3,3,3,3,3,3,4,4,0,5,5], [5,5,0,4,2,2,3,0,0,3,2,3,3,0,5,5], [5,5,0,3,3,3,0,5,5,0,3,3,3,0,5,5], [5,5,0,3,3,3,0,5,5,0,3,3,4,0,5,5], [5,5,0,4,3,3,3,0,0,3,2,3,3,0,5,5], [5,5,0,4,4,2,3,3,3,3,3,4,4,0,5,5], [5,5,5,0,4,4,3,3,3,3,4,4,0,5,5,5], [5,5,5,5,0,3,3,3,4,4,4,0,5,5,5,5], [5,5,5,5,5,0,0,0,0,0,0,5,5,5,5,5], [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5], [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5]]
+    @State var gridNumbers: [[Int]] = [[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1], [-1,-1,-1,-1,0,0,0,0,0,0,0,0,-1,-1,-1,-1], [-1,-1,-1,0,-1,-1,-1,-1,-1,-1,-1,-1,0,-1,-1,-1], [-1,-1,-1,0,0,0,0,0,0,0,0,0,0,-1,-1,-1], [-1,-1,-1,0,-1,-1,-1,-1,-1,-1,-1,-1,0,-1,-1,-1], [-1,-1,-1,0,-1,-1,-1,-1,-1,-1,-1,-1,0,-1,-1,-1], [-1,-1,-1,-1,0,-1,-1,-1,-1,-1,-1,0,-1,-1,-1,-1], [-1,-1,-1,-1,0,-1,-1,-1,-1,-1,-1,0,-1,-1,-1,-1], [-1,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,-1], [-1,-1,-1,-1,-1,-1,0,-1,-1,0,-1,-1,-1,-1,-1,-1], [-1,-1,-1,-1,-1,-1,-1,0,0,-1,-1,-1,-1,-1,-1,-1], [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1], [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1], [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1], [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1], [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]]
 
     
-    var colorPalette : [Color] = [Color.black, Color.pink, Color.blue, Color.brown, Color.white]
+    var colorPalette : [Color] = [Color.white, Color.black, Color.red, Color.blue, Color.yellow, Color.orange, Color.green, Color.purple]
     
     @State var painting: Bool = false
     
@@ -116,18 +116,20 @@ struct ContentView: View {
                     .frame(width: 300, height: 75)
                     .foregroundColor(.gray.opacity(0.2))
                     .cornerRadius(6)
-                HStack {
-                    ForEach(0..<colorPalette.count){ i in
-                        PalleteSquare(color: colorPalette[i], curColor: $curColor, viewModel: viewModel)
-                            .overlay (
-                                Text("\(viewModel.getColorID(_color: colorPalette[i]))")
-                                    .foregroundStyle(viewModel.getColorID(_color: colorPalette[i]) == 0 ? Color.white : Color.black)
-                                
-                            )
-
+                ScrollView(.horizontal, showsIndicators: false){
+                    HStack {
+                        ForEach(0..<colorPalette.count){ i in
+                            PalleteSquare(color: colorPalette[i], curColor: $curColor, viewModel: viewModel)
+                                .overlay (
+                                    Text("\(viewModel.getColorID(_color: colorPalette[i]))")
+                                        .foregroundStyle(viewModel.getColorID(_color: colorPalette[i]) == 0 ? Color.white : Color.black)
+                                    
+                                )
+                            
+                        }
+                        
                     }
-
-                }
+                }.frame(width: 275)
             }
         }
         .alert("Salvar Desenho", isPresented: $mostrarAlertaSalvar) {
