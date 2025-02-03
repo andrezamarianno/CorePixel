@@ -120,11 +120,13 @@ struct ContentView: View {
                     HStack {
                         ForEach(0..<colorPalette.count){ i in
                             PalleteSquare(color: colorPalette[i], curColor: $curColor, viewModel: viewModel)
-                                .overlay (
-                                    Text("\(viewModel.getColorID(_color: colorPalette[i]))")
-                                        .foregroundStyle(viewModel.getColorID(_color: colorPalette[i]) == 0 ? Color.white : Color.black)
+                                .overlay {
+                                    if(viewModel.getColorID(_color: colorPalette[i]) != -1){
+                                        Text("\(viewModel.getColorID(_color: colorPalette[i]))")
+                                            .foregroundStyle(viewModel.getColorID(_color: colorPalette[i]) == 0 ? Color.white : Color.black)
+                                    }
                                     
-                                )
+                                }
                             
                         }
                         

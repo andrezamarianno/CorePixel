@@ -25,7 +25,7 @@ struct PalleteSquare: View {
             
             //.border(Color.black.opacity(curColor == color ? 1 : 0))
             
-            Text(String(viewModel.getColorID(_color: color)))
+            //Text(String(viewModel.getColorID(_color: color)))
             
         }
     }
