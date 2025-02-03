@@ -5,6 +5,7 @@ struct ListaDeDesenhos: View {
     @ObservedObject var viewModel: CorePixelViewModel
     @State private var vaiParaContent = false
     @State private var selectedGrid: [[Color]]?
+    var catalogoViewModel : CatalogoViewModel = CatalogoViewModel()
 
     
     var body: some View {
@@ -51,10 +52,10 @@ struct ListaDeDesenhos: View {
                     }
                 }
             }
-            .navigationTitle("Catálogo")
+            .navigationTitle("Meus desenhos")
             .navigationDestination(isPresented: $vaiParaContent) {
                 if let grid = selectedGrid {
-                               ContentView(viewModel: viewModel, initialGrid: grid)
+                    ContentView(viewModel: viewModel, initialGrid: grid, initialDrawing: catalogoViewModel.listaDesenhos[3], premade: false)
                            }
             }
             .onAppear {

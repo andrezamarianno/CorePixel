@@ -7,7 +7,7 @@ struct ContentView: View {
     
     @State var gridColors: [[Color]] = Array(repeating: Array(repeating: .white, count: 16), count: 16)
 
-    @State var gridNumbers: [[Int]] = [[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1], [-1,-1,-1,-1,-1,0,0,-1,-1,0,0,-1,-1,-1,-1,-1], [-1,-1,-1,-1,0,5,5,0,0,5,5,0,-1,-1,-1,-1], [-1,-1,-1,-1,-1,0,5,5,5,5,0,-1,-1,-1,-1,-1], [-1,-1,-1,-1,-1,0,0,0,0,0,0,-1,-1,-1,-1,-1], [-1,-1,-1,-1,0,1,1,1,1,1,1,0,-1,-1,-1,-1], [-1,-1,-1,0,1,1,1,1,1,1,1,1,0,-1,-1,-1], [-1,-1,-1,0,1,1,0,1,1,0,1,1,0,-1,-1,-1], [-1,-1,-1,0,1,1,0,1,1,0,1,1,0,-1,-1,-1], [-1,-1,-1,0,1,1,0,1,1,0,1,1,0,-1,-1,-1], [-1,-1,-1,0,1,1,0,1,1,0,1,1,0,-1,-1,-1], [-1,-1,-1,0,1,1,1,1,1,1,1,1,0,-1,-1,-1], [-1,-1,-1,-1,0,1,1,1,1,1,1,0,-1,-1,-1,-1], [-1,-1,-1,-1,-1,0,0,0,0,0,0,-1,-1,-1,-1,-1], [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1], [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]]
+    @State var gridNumbers: [[Int]]
 
     
     var colorPalette : [Color] = [Color.white, Color.black, Color.red, Color.blue, Color.yellow, Color.orange, Color.green, Color.purple]
@@ -24,9 +24,11 @@ struct ContentView: View {
     
     @ObservedObject var viewModel = CorePixelViewModel()
         @Environment(\.dismiss) private var dismiss
-    init(viewModel: CorePixelViewModel, initialGrid: [[Color]]) {
+    init(viewModel: CorePixelViewModel, initialGrid: [[Color]], initialDrawing: [[Int]], premade : Bool) {
             self.viewModel = viewModel
             _gridColors = State(initialValue: initialGrid)
+            _gridNumbers = State(initialValue: initialDrawing)
+            premadeDrawing = premade
         }
     
     var body: some View {
@@ -146,7 +148,7 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView(viewModel: CorePixelViewModel(),
-                initialGrid: Array(repeating: Array(repeating: .white, count: 16), count: 16))
-}
+//#Preview {
+//    ContentView(viewModel: CorePixelViewModel(),
+//                initialGrid: Array(repeating: Array(repeating: .white, count: 16), count: 16))
+//}

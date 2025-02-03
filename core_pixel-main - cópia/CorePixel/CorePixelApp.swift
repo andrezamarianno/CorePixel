@@ -12,7 +12,7 @@ struct YourAppName: App {
     
     var body: some Scene {
         WindowGroup {
-            ListaDeDesenhos(viewModel: CorePixelViewModel())
+            CatalogoView(viewModel: CorePixelViewModel())
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
