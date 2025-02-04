@@ -9,7 +9,7 @@ struct CatalogoView: View {
     
     let catalogoViewModel : CatalogoViewModel = CatalogoViewModel()
     
-    let titulos = ["Coração", "Pizza", "Donut", "Melancia", "Sol", "Deadpool"]
+    let titulos = ["Coração", "Pizza", "Tomate"]
     
     var body: some View {
         
@@ -34,21 +34,23 @@ struct CatalogoView: View {
                 }
                 
                 VStack {
-                    NavigationLink(destination: ContentView(viewModel: viewModel, initialGrid: selectedGrid, initialDrawing: catalogoViewModel.listaDesenhos[0], premade: true)){
+                    NavigationLink(destination: ContentView(viewModel: viewModel, initialGrid: selectedGrid, initialDrawing: catalogoViewModel.listaDesenhos[0], premade: true, _premadeID: 0, _estaSalvo: false, _desenhoSalvoID: 0)){
                         Text("Desenho 1")
                     }
-                    NavigationLink(destination: ContentView(viewModel: viewModel, initialGrid: selectedGrid, initialDrawing: catalogoViewModel.listaDesenhos[1], premade: true)){
+                    NavigationLink(destination: ContentView(viewModel: viewModel, initialGrid: selectedGrid, initialDrawing: catalogoViewModel.listaDesenhos[1], premade: true, _premadeID: 1, _estaSalvo: false, _desenhoSalvoID: 0)){
                         Text("Desenho 2")
                     }
-                    NavigationLink(destination: ContentView(viewModel: viewModel, initialGrid: selectedGrid, initialDrawing: catalogoViewModel.listaDesenhos[2], premade: true)){
+                    NavigationLink(destination: ContentView(viewModel: viewModel, initialGrid: selectedGrid, initialDrawing: catalogoViewModel.listaDesenhos[2], premade: true, _premadeID: 2, _estaSalvo: false, _desenhoSalvoID: 0)){
                         Text("Desenho 3")
                     }
-                    NavigationLink(destination: ContentView(viewModel: viewModel, initialGrid: selectedGrid, initialDrawing: catalogoViewModel.listaDesenhos[3], premade: false)){
+                    NavigationLink(destination: ContentView(viewModel: viewModel, initialGrid: selectedGrid, initialDrawing: catalogoViewModel.listaDesenhos[3], premade: false, _premadeID: 3, _estaSalvo: false, _desenhoSalvoID: 0)){
                         Text("Desenho livre")
                     }
+                    
                     NavigationLink(destination: ListaDeDesenhos(viewModel: viewModel)){
-                                           Text("Meus Desenhos")
-                                       }
+                        Text("Meus Desenhos")
+                    }
+
                 }
 
                 
@@ -63,6 +65,3 @@ struct CatalogoView: View {
 #Preview {
     CatalogoView(viewModel: CorePixelViewModel())
 }
-
-
-

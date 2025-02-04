@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4A5C16942D52819B00C97B59 /* MiniPixelPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C16932D52819B00C97B59 /* MiniPixelPreview.swift */; };
+		4A5C16962D52ACE700C97B59 /* Quantico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A5C16952D52ACE700C97B59 /* Quantico-Regular.ttf */; };
 		4A8E27C42D4C0E690013AB14 /* PixelArtModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4A8E27C22D4C0E690013AB14 /* PixelArtModel.xcdatamodeld */; };
 		4A8E27C62D4C0EF20013AB14 /* CorePixelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8E27C52D4C0EF20013AB14 /* CorePixelModel.swift */; };
 		4A8E27C82D4C11970013AB14 /* CorePixelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8E27C72D4C11970013AB14 /* CorePixelViewModel.swift */; };
@@ -26,11 +27,11 @@
 		BE9F2E4D2D4AAE80008C3422 /* PalleteSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F2E4C2D4AAE80008C3422 /* PalleteSquare.swift */; };
 		BE9F2E4F2D4AAE99008C3422 /* SquareComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F2E4E2D4AAE99008C3422 /* SquareComponent.swift */; };
 		BEAE8EBF2D51541C0048A5F6 /* CatalogoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAE8EBE2D51541C0048A5F6 /* CatalogoViewModel.swift */; };
-		CE53874B2D52985D00258F51 /* Quantico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE53874A2D52985D00258F51 /* Quantico-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4A5C16932D52819B00C97B59 /* MiniPixelPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPixelPreview.swift; sourceTree = "<group>"; };
+		4A5C16952D52ACE700C97B59 /* Quantico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quantico-Regular.ttf"; path = "../../../Downloads/Quantico/Quantico-Regular.ttf"; sourceTree = "<group>"; };
 		4A8E27C32D4C0E690013AB14 /* PixelArtModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PixelArtModel.xcdatamodel; sourceTree = "<group>"; };
 		4A8E27C52D4C0EF20013AB14 /* CorePixelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorePixelModel.swift; sourceTree = "<group>"; };
 		4A8E27C72D4C11970013AB14 /* CorePixelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorePixelViewModel.swift; sourceTree = "<group>"; };
@@ -51,7 +52,6 @@
 		BE9F2E4C2D4AAE80008C3422 /* PalleteSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalleteSquare.swift; sourceTree = "<group>"; };
 		BE9F2E4E2D4AAE99008C3422 /* SquareComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareComponent.swift; sourceTree = "<group>"; };
 		BEAE8EBE2D51541C0048A5F6 /* CatalogoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogoViewModel.swift; sourceTree = "<group>"; };
-		CE53874A2D52985D00258F51 /* Quantico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quantico-Regular.ttf"; path = "../../../Downloads/Quantico-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +81,7 @@
 		BE9F2E312D4AAE58008C3422 = {
 			isa = PBXGroup;
 			children = (
-				CE53874A2D52985D00258F51 /* Quantico-Regular.ttf */,
+				4A5C16952D52ACE700C97B59 /* Quantico-Regular.ttf */,
 				BEAE8EBE2D51541C0048A5F6 /* CatalogoViewModel.swift */,
 				4A8E27C52D4C0EF20013AB14 /* CorePixelModel.swift */,
 				4A8E27C72D4C11970013AB14 /* CorePixelViewModel.swift */,
@@ -183,9 +183,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A5C16962D52ACE700C97B59 /* Quantico-Regular.ttf in Resources */,
 				BE9F2E462D4AAE59008C3422 /* Preview Assets.xcassets in Resources */,
 				BE9F2E422D4AAE59008C3422 /* Assets.xcassets in Resources */,
-				CE53874B2D52985D00258F51 /* Quantico-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

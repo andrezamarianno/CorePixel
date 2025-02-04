@@ -15,9 +15,6 @@ struct SquareComponent: View {
                 .frame(width: 23, height: 23)
                 .border(Color.gray, width: 0.4)
                 .padding(-3.95)
-//                .onTapGesture {
-//                    pixelGrid[posicao.linha][posicao.coluna] = corParaPintar
-//                }
                 .foregroundColor(pixelGrid[posicao.linha][posicao.coluna])
                 .onChange(of: reset) {
                     resetarCor()
