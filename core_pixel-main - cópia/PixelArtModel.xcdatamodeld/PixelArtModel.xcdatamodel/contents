@@ -3,6 +3,7 @@
     <entity name="Desenhos" representedClassName="Desenhos" syncable="YES" codeGenerationType="class">
         <attribute name="criacao" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="pixels" optional="YES" attributeType="Binary"/>
+        <attribute name="premadeID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="titulo" optional="YES" attributeType="String"/>
     </entity>
 </model>

@@ -15,7 +15,13 @@ struct ContentView: View {
     @State var painting: Bool = false
     
     var premadeDrawing : Bool = true
+    var premadeID : Int
     @State var locked: Bool = false
+    
+    @State var desenhoSalvoAlerta : Bool = false
+    
+    var estaSalvo : Bool
+    var desenhoSalvoID : Int
     
     let squareSize: CGFloat = 23
     
@@ -24,11 +30,15 @@ struct ContentView: View {
     
     @ObservedObject var viewModel = CorePixelViewModel()
         @Environment(\.dismiss) private var dismiss
-    init(viewModel: CorePixelViewModel, initialGrid: [[Color]], initialDrawing: [[Int]], premade : Bool) {
+    init(viewModel: CorePixelViewModel, initialGrid: [[Color]], initialDrawing: [[Int]], premade : Bool, _premadeID : Int, _estaSalvo : Bool, _desenhoSalvoID : Int) {
             self.viewModel = viewModel
             _gridColors = State(initialValue: initialGrid)
             _gridNumbers = State(initialValue: initialDrawing)
             premadeDrawing = premade
+            premadeID = _premadeID
+            estaSalvo = _estaSalvo
+            desenhoSalvoID = _desenhoSalvoID
+ 
         }
     
     var body: some View {
@@ -38,7 +48,16 @@ struct ContentView: View {
                 Spacer()
                 
                 botaoSalvar(action: {
-                                mostrarAlertaSalvar = true
+                    
+                    if(!estaSalvo){
+                        mostrarAlertaSalvar = true
+                        print("Desenho novo!")
+                    } else {
+                        viewModel.editarDesenho(pixels: gridColors, desenho: viewModel.desenhos[desenhoSalvoID])
+                        desenhoSalvoAlerta = true
+                        print("Desenho existente")
+                    }
+      
                             })
             }
             .padding(90)
@@ -140,10 +159,16 @@ struct ContentView: View {
             TextField("Título do desenho", text: $tituloDesenho)
             Button("Cancelar", role: .cancel) {}
             Button("Salvar") {
-                viewModel.salvarDesenho(titulo: tituloDesenho, pixels: gridColors)
+                viewModel.salvarDesenho(titulo: tituloDesenho, pixels: gridColors, premadeID: Int64(premadeID))
                 tituloDesenho = ""
                 dismiss()
             }
+        }
+        .alert("Desenho salvo", isPresented: $desenhoSalvoAlerta) {
+            Button("OK", role: .cancel) {
+                dismiss()
+            }
+            
         }
     }
 }

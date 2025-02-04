@@ -5,10 +5,11 @@ class CorePixelViewModel: ObservableObject {
     @Published var desenhos: [Desenhos] = []
     private let context = PersistenceController.shared.container.viewContext
     
-    func salvarDesenho(titulo: String, pixels: [[Color]]) {
+    func salvarDesenho(titulo: String, pixels: [[Color]], premadeID : Int64) {
         let desenhando = Desenhos(context: context)
         desenhando.titulo = titulo
         desenhando.criacao = Date()
+        desenhando.premadeID = premadeID
         
   
         var pixelData: [Pixel] = []
@@ -26,6 +27,31 @@ class CorePixelViewModel: ObservableObject {
         }
         
         try? context.save()
+        carregarDesenho()
+    }
+    
+    func editarDesenho(pixels: [[Color]], desenho: Desenhos) {
+        
+        var pixelData: [Pixel] = []
+        for (i, linha) in pixels.enumerated() {
+            for (j, color) in linha.enumerated() {
+                let pixel = Pixel(linha: i,
+                                coluna: j,
+                                coresRGB: color.toComponents())
+                pixelData.append(pixel)
+            }
+        }
+        
+        if let encodedPixels = try? JSONEncoder().encode(pixelData) {
+            desenho.pixels = encodedPixels
+        }
+        
+        do {
+            try context.save()
+        } catch {
+            print("Erro ao editar o arquivo do CoreData.")
+        }
+        
         carregarDesenho()
     }
     
