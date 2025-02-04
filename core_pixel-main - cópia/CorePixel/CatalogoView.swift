@@ -9,7 +9,7 @@ struct CatalogoView: View {
     
     let catalogoViewModel : CatalogoViewModel = CatalogoViewModel()
     
-    let titulos = ["Coração", "Pizza", "Donut", "Melancia", "Sol", "Deadpool"]
+    let titulos = ["Coração", "Pizza", "Tomate"]
     
     var body: some View {
         
@@ -65,6 +65,3 @@ struct CatalogoView: View {
 #Preview {
     CatalogoView(viewModel: CorePixelViewModel())
 }
-
-
-

@@ -73,17 +73,22 @@ struct ListaDeDesenhos: View {
                                         .cornerRadius(5)
                                         .foregroundColor(Color("AzulCatalogo"))
                                         .padding(.top, -35)
-                                    HStack{
-                                        Text(desenhando.titulo ?? "Sem título")
-                                            .font(.custom("Quantico-Regular", size: 25))
-                                        
-                                        Text(desenhando.criacao ?? Date(), formatter: dateFormatter)
-                                            .font(.custom("Quantico-Regular", size: 25))
-                                            .foregroundColor(.secondary)
-                                            .frame(maxWidth: .infinity, alignment: .trailing)
-                                        
+                                    VStack{
+                                        HStack{
+                                            Text(desenhando.titulo ?? "Sem título")
+                                                .font(.custom("Quantico-Regular", size: 25))
+                                                .padding(.horizontal, 20)
+                    
+                                            
+                                            Text(desenhando.criacao ?? Date(), formatter: dateFormatter)
+                                                .font(.custom("Quantico-Regular", size: 25))
+                                                .foregroundColor(.secondary)
+                                                .frame(maxWidth: .infinity, alignment: .trailing)
+                                         .padding(.trailing, 20)
+                                            
+                                        }
                                     }
-                                    
+                                    .padding(.top, -32)
                                     Spacer()
                                     
                                 }
