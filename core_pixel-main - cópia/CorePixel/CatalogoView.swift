@@ -60,9 +60,9 @@ struct CatalogoView: View {
     }
 }
 
-//#Preview {
-//    CatalogoView()
-//}
+#Preview {
+    CatalogoView(viewModel: CorePixelViewModel())
+}
 
 
 

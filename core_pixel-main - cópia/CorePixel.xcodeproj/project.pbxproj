@@ -19,7 +19,6 @@
 		4AD505212D5147F100C979D5 /* MeusFavoritosComponente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD505202D5147F100C979D5 /* MeusFavoritosComponente.swift */; };
 		4AD505232D51480E00C979D5 /* PreviewDesenho.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD505222D51480E00C979D5 /* PreviewDesenho.swift */; };
 		4AD505252D51483500C979D5 /* CatalogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD505242D51483500C979D5 /* CatalogoView.swift */; };
-		4ADA53BA2D5164A800029612 /* Quantico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA53B92D5164A800029612 /* Quantico-Regular.ttf */; };
 		BE9F2E3E2D4AAE58008C3422 /* CorePixelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F2E3D2D4AAE58008C3422 /* CorePixelApp.swift */; };
 		BE9F2E402D4AAE58008C3422 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F2E3F2D4AAE58008C3422 /* ContentView.swift */; };
 		BE9F2E422D4AAE59008C3422 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE9F2E412D4AAE59008C3422 /* Assets.xcassets */; };
@@ -27,6 +26,7 @@
 		BE9F2E4D2D4AAE80008C3422 /* PalleteSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F2E4C2D4AAE80008C3422 /* PalleteSquare.swift */; };
 		BE9F2E4F2D4AAE99008C3422 /* SquareComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F2E4E2D4AAE99008C3422 /* SquareComponent.swift */; };
 		BEAE8EBF2D51541C0048A5F6 /* CatalogoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAE8EBE2D51541C0048A5F6 /* CatalogoViewModel.swift */; };
+		CE53874B2D52985D00258F51 /* Quantico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE53874A2D52985D00258F51 /* Quantico-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,7 +42,6 @@
 		4AD505202D5147F100C979D5 /* MeusFavoritosComponente.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeusFavoritosComponente.swift; sourceTree = "<group>"; };
 		4AD505222D51480E00C979D5 /* PreviewDesenho.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDesenho.swift; sourceTree = "<group>"; };
 		4AD505242D51483500C979D5 /* CatalogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogoView.swift; sourceTree = "<group>"; };
-		4ADA53B92D5164A800029612 /* Quantico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quantico-Regular.ttf"; path = "../../../Downloads/Quantico/Quantico-Regular.ttf"; sourceTree = "<group>"; };
 		BE9F2E3A2D4AAE58008C3422 /* CorePixel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CorePixel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE9F2E3D2D4AAE58008C3422 /* CorePixelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorePixelApp.swift; sourceTree = "<group>"; };
 		BE9F2E3F2D4AAE58008C3422 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,6 +51,7 @@
 		BE9F2E4C2D4AAE80008C3422 /* PalleteSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalleteSquare.swift; sourceTree = "<group>"; };
 		BE9F2E4E2D4AAE99008C3422 /* SquareComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareComponent.swift; sourceTree = "<group>"; };
 		BEAE8EBE2D51541C0048A5F6 /* CatalogoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogoViewModel.swift; sourceTree = "<group>"; };
+		CE53874A2D52985D00258F51 /* Quantico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quantico-Regular.ttf"; path = "../../../Downloads/Quantico-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +81,7 @@
 		BE9F2E312D4AAE58008C3422 = {
 			isa = PBXGroup;
 			children = (
-				4ADA53B92D5164A800029612 /* Quantico-Regular.ttf */,
+				CE53874A2D52985D00258F51 /* Quantico-Regular.ttf */,
 				BEAE8EBE2D51541C0048A5F6 /* CatalogoViewModel.swift */,
 				4A8E27C52D4C0EF20013AB14 /* CorePixelModel.swift */,
 				4A8E27C72D4C11970013AB14 /* CorePixelViewModel.swift */,
@@ -183,9 +183,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4ADA53BA2D5164A800029612 /* Quantico-Regular.ttf in Resources */,
 				BE9F2E462D4AAE59008C3422 /* Preview Assets.xcassets in Resources */,
 				BE9F2E422D4AAE59008C3422 /* Assets.xcassets in Resources */,
+				CE53874B2D52985D00258F51 /* Quantico-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
