@@ -46,6 +46,9 @@ struct CatalogoView: View {
                     NavigationLink(destination: ContentView(viewModel: viewModel, initialGrid: selectedGrid, initialDrawing: catalogoViewModel.listaDesenhos[3], premade: false)){
                         Text("Desenho livre")
                     }
+                    NavigationLink(destination: ListaDeDesenhos(viewModel: viewModel)){
+                                           Text("Meus Desenhos")
+                                       }
                 }
 
                 

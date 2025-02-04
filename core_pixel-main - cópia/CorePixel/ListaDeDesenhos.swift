@@ -5,64 +5,104 @@ struct ListaDeDesenhos: View {
     @ObservedObject var viewModel: CorePixelViewModel
     @State private var vaiParaContent = false
     @State private var selectedGrid: [[Color]]?
-    var catalogoViewModel : CatalogoViewModel = CatalogoViewModel()
-
+    
+    let columns = [
+        GridItem(.flexible(), spacing: 20),
+        GridItem(.flexible(), spacing: 20),
+        GridItem(.flexible(), spacing: 20)
+    ]
+    
+    private var dateFormatter: DateFormatter {
+          let formatter = DateFormatter()
+          formatter.dateFormat = "dd/MM/yy"
+          return formatter
+      }
     
     var body: some View {
-        NavigationStack {
-            VStack {
+       
+            
+            HStack{
+                Text("Meus desenhos")
+                    .bold()
+                    .font(.custom("Quantico-Regular", size: 30))
+                    .padding(50)
                 Spacer()
                 
-                Button(action: {
-                    selectedGrid = Array(repeating: Array(repeating: .white, count: 16), count: 16)
-
-                    vaiParaContent = true
-                }) {
-                    HStack {
-                        Text("pintando a mão livre")
-                            .font(.title2)
+            }
+            .background(Color("background"))
+            
+            NavigationStack {
+                
+                ScrollView {
+                    LazyVGrid(columns: columns, spacing: 70) {
+                        ForEach(viewModel.desenhos) { desenhando in
+                            VStack {
+                                MiniPixelPreview(pixels: viewModel.carregarPixels(from: desenhando))
+                                    .frame(height: 400)
+                                    .frame(width: 400)
+                                    .cornerRadius(10)
+                                
+                                
+                                ZStack {
+                                    
+                                    Rectangle()
+                                        .frame(width: 400, height: 80)
+                                        .cornerRadius(5)
+                                        .foregroundColor(Color("AzulCatalogo"))
+                                        .padding(.top, -35)
+                                    HStack{
+                                        Text(desenhando.titulo ?? "Sem título")
+                                            .font(.custom("Quantico-Regular", size: 25))
+                                        
+                                        Text(desenhando.criacao ?? Date(), formatter: dateFormatter)
+                                            .font(.custom("Quantico-Regular", size: 25))
+                                            .foregroundColor(.secondary)
+                                            .frame(maxWidth: .infinity, alignment: .trailing)
+                                        
+                                    }
+                                    
+                                    Spacer()
+                                    
+                              }
+                                .padding(.horizontal, 20)
+                            }
+                            .onTapGesture {
+                                selectedGrid = viewModel.carregarPixels(from: desenhando)
+                                vaiParaContent = true
+                            }
+                        }
                     }
                     .padding()
-                    .background(Color("AzulCatalogo"))
-                    .foregroundColor(Color.black)
-                    .cornerRadius(10)
                 }
-                
-                Spacer()
-                    .frame(height: 40)
-                
-                List {
-                    ForEach(viewModel.desenhos) { desenhando in
-                        VStack(alignment: .leading) {
-                            Text(desenhando.titulo ?? "Sem título")
-                                .font(.headline)
-                            Text(desenhando.criacao ?? Date(), style: .date)
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
+                .background(Color("background"))
+                .navigationDestination(isPresented: $vaiParaContent) {
+                    if let grid = selectedGrid {
+                        let numberGrid = grid.map { row in
+                            row.map { color in
+                                viewModel.getColorID(_color: color)
+                            }
                         }
-                        .onTapGesture {
-                                               selectedGrid = viewModel.carregarPixels(from: desenhando)
-                                               vaiParaContent = true
-                                           }
-                    }
-                    .onDelete { indexSet in
-                        for index in indexSet {
-                            viewModel.excluirDesenho(viewModel.desenhos[index])
-                        }
+                        
+                        ContentView(
+                            viewModel: viewModel,
+                            initialGrid: grid,
+                            initialDrawing: numberGrid,
+                            premade: false
+                        )
                     }
                 }
+                .onAppear {
+                    viewModel.carregarDesenho()
+                }
+                
             }
-            .navigationTitle("Meus desenhos")
-            .navigationDestination(isPresented: $vaiParaContent) {
-                if let grid = selectedGrid {
-                    ContentView(viewModel: viewModel, initialGrid: grid, initialDrawing: catalogoViewModel.listaDesenhos[3], premade: false)
-                           }
-            }
-            .onAppear {
-                viewModel.carregarDesenho()
-            }
+            
         }
+       
     }
+    
+
+
+#Preview {
+    ListaDeDesenhos(viewModel: CorePixelViewModel())
 }
-
-
