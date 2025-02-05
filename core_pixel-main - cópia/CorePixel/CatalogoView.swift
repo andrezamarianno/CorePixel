@@ -34,16 +34,16 @@ struct CatalogoView: View {
                 }
                 
                 VStack {
-                    NavigationLink(destination: ContentView(viewModel: viewModel, initialGrid: selectedGrid, initialDrawing: catalogoViewModel.listaDesenhos[0], premade: true, _premadeID: 0, _estaSalvo: false, _desenhoSalvoID: 0)){
+                    NavigationLink(destination: DesenhoView(viewModel: viewModel, initialGrid: selectedGrid, initialDrawing: catalogoViewModel.listaDesenhos[0], premade: true, _premadeID: 0, _estaSalvo: false, _desenhoSalvoID: 0)){
                         Text("Desenho 1")
                     }
-                    NavigationLink(destination: ContentView(viewModel: viewModel, initialGrid: selectedGrid, initialDrawing: catalogoViewModel.listaDesenhos[1], premade: true, _premadeID: 1, _estaSalvo: false, _desenhoSalvoID: 0)){
+                    NavigationLink(destination: DesenhoView(viewModel: viewModel, initialGrid: selectedGrid, initialDrawing: catalogoViewModel.listaDesenhos[1], premade: true, _premadeID: 1, _estaSalvo: false, _desenhoSalvoID: 0)){
                         Text("Desenho 2")
                     }
-                    NavigationLink(destination: ContentView(viewModel: viewModel, initialGrid: selectedGrid, initialDrawing: catalogoViewModel.listaDesenhos[2], premade: true, _premadeID: 2, _estaSalvo: false, _desenhoSalvoID: 0)){
+                    NavigationLink(destination: DesenhoView(viewModel: viewModel, initialGrid: selectedGrid, initialDrawing: catalogoViewModel.listaDesenhos[2], premade: true, _premadeID: 2, _estaSalvo: false, _desenhoSalvoID: 0)){
                         Text("Desenho 3")
                     }
-                    NavigationLink(destination: ContentView(viewModel: viewModel, initialGrid: selectedGrid, initialDrawing: catalogoViewModel.listaDesenhos[3], premade: false, _premadeID: 3, _estaSalvo: false, _desenhoSalvoID: 0)){
+                    NavigationLink(destination: DesenhoView(viewModel: viewModel, initialGrid: selectedGrid, initialDrawing: catalogoViewModel.listaDesenhos[3], premade: false, _premadeID: 3, _estaSalvo: false, _desenhoSalvoID: 0)){
                         Text("Desenho livre")
                     }
                     

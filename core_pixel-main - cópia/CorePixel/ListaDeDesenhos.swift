@@ -122,7 +122,7 @@ struct ListaDeDesenhos: View {
             .navigationTitle("Meus desenhos")
             .navigationDestination(isPresented: $vaiParaContent) {
                 if let grid = selectedGrid {
-                    ContentView(viewModel: viewModel, initialGrid: grid, initialDrawing: catalogoViewModel.listaDesenhos[Int(premadeID)], premade: isPremade, _premadeID: 3, _estaSalvo: true, _desenhoSalvoID: desenhoSalvoID)
+                    DesenhoView(viewModel: viewModel, initialGrid: grid, initialDrawing: catalogoViewModel.listaDesenhos[Int(premadeID)], premade: isPremade, _premadeID: 3, _estaSalvo: true, _desenhoSalvoID: desenhoSalvoID)
                 }
             }
             .onAppear {
@@ -136,7 +136,3 @@ struct ListaDeDesenhos: View {
     }
 }
 
-
-//#Preview {
-//    ListaDeDesenhos(viewModel: CorePixelViewModel())
-//}
