@@ -25,6 +25,8 @@ struct ListaDeDesenhos: View {
     @State var premadeID : Int64 = 0
     
     @State var desenhoSalvoID : Int = 0
+    
+    @State var apagarDesenhoAlerta : Bool = false
  
     var body: some View {
         
@@ -59,40 +61,65 @@ struct ListaDeDesenhos: View {
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 70) {
                         ForEach(viewModel.desenhos) { desenhando in
-                            VStack {
-                                MiniPixelPreview(pixels: viewModel.carregarPixels(from: desenhando))
-                                    .frame(height: 400)
-                                    .frame(width: 400)
-                                    .cornerRadius(10)
+                            ZStack {
                                 
-                                
-                                ZStack {
+                                VStack {
+                                    MiniPixelPreview(pixels: viewModel.carregarPixels(from: desenhando))
+                                        .frame(height: 400)
+                                        .frame(width: 400)
+                                        .cornerRadius(10)
                                     
-                                    Rectangle()
-                                        .frame(width: 400, height: 80)
-                                        .cornerRadius(5)
-                                        .foregroundColor(Color("AzulCatalogo"))
-                                        .padding(.top, -35)
-                                    VStack{
-                                        HStack{
-                                            Text(desenhando.titulo ?? "Sem título")
-                                                .font(.custom("Quantico-Regular", size: 25))
-                                                .padding(.horizontal, 20)
-                    
-                                            
-                                            Text(desenhando.criacao ?? Date(), formatter: dateFormatter)
-                                                .font(.custom("Quantico-Regular", size: 25))
-                                                .foregroundColor(.secondary)
-                                                .frame(maxWidth: .infinity, alignment: .trailing)
-                                         .padding(.trailing, 20)
-                                            
+                                    
+                                    ZStack {
+                                        
+                                        Rectangle()
+                                            .frame(width: 400, height: 80)
+                                            .cornerRadius(5)
+                                            .foregroundColor(Color("AzulCatalogo"))
+                                            .padding(.top, -35)
+                                        VStack{
+                                            HStack{
+                                                Text(desenhando.titulo ?? "Sem título")
+                                                    .font(.custom("Quantico-Regular", size: 25))
+                                                    .padding(.horizontal, 20)
+                                                
+                                                
+                                                Text(desenhando.criacao ?? Date(), formatter: dateFormatter)
+                                                    .font(.custom("Quantico-Regular", size: 25))
+                                                    .foregroundColor(.secondary)
+                                                    .frame(maxWidth: .infinity, alignment: .trailing)
+                                                    .padding(.trailing, 20)
+                                                
+                                            }
+                                        }
+                                        .padding(.top, -32)
+                                        Spacer()
+                                        
+                                    }
+                                    .padding(.horizontal, 20)
+                                }
+                                
+                                Button(){
+                                    apagarDesenhoAlerta.toggle()
+                                    
+                                    for i in 0..<viewModel.desenhos.count{
+                                        if(desenhando == viewModel.desenhos[i]){
+                                            desenhoSalvoID = i
                                         }
                                     }
-                                    .padding(.top, -32)
-                                    Spacer()
-                                    
-                                }
-                                .padding(.horizontal, 20)
+                                } label: {
+                                    ZStack {
+                                        Rectangle()
+                                            .frame(width: 50, height: 50)
+                                            .foregroundColor(.white.opacity(0.6))
+                                            .cornerRadius(4)
+                                        
+                                        Image(systemName: "trash")
+                                            .foregroundColor(.red)
+                                    }
+                                }.font(.title)
+                                    .padding(.leading, 325)
+                                    .padding(.bottom, 380)
                             }
                             .onTapGesture {
                                 selectedGrid = viewModel.carregarPixels(from: desenhando)
@@ -110,6 +137,7 @@ struct ListaDeDesenhos: View {
                                     }
                                 }
                             }
+                            
                         }
                     }
                     .padding()
@@ -128,6 +156,14 @@ struct ListaDeDesenhos: View {
             .onAppear {
                 viewModel.carregarDesenho()
                 
+            }
+            .alert("Deseja apagar o desenho?", isPresented: $apagarDesenhoAlerta) {
+                Button("Cancelar", role: .cancel) {
+                    
+                }
+                Button("Apagar", role: .destructive) {
+                    viewModel.excluirDesenho(viewModel.desenhos[desenhoSalvoID])
+                }
             }
             
             .zIndex(10)

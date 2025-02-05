@@ -3,9 +3,9 @@ import SwiftUI
 struct DesenhoView: View {
     
     @State var curColor: Color = .black
-    @State var reset: Bool = false
     
     @State var gridColors: [[Color]] = Array(repeating: Array(repeating: .white, count: 16), count: 16)
+    @State var previousGridColors: [[[Color]]] = [[[]]]
 
     @State var gridNumbers: [[Int]]
 
@@ -23,7 +23,7 @@ struct DesenhoView: View {
     var estaSalvo : Bool
     var desenhoSalvoID : Int
     
-    let squareSize: CGFloat = 23
+    let squareSize: CGFloat = 40
     
     @State private var tituloDesenho = ""
     @State private var mostrarAlertaSalvar = false
@@ -42,102 +42,147 @@ struct DesenhoView: View {
         }
     
     var body: some View {
-        VStack {
-            HStack {
-                
-                Spacer()
-                
-                botaoSalvar(action: {
-                    
-                    if(!estaSalvo){
-                        mostrarAlertaSalvar = true
-                        print("Desenho novo!")
-                    } else {
-                        viewModel.editarDesenho(pixels: gridColors, desenho: viewModel.desenhos[desenhoSalvoID])
-                        desenhoSalvoAlerta = true
-                        print("Desenho existente")
-                    }
-      
-                            })
-            }
-            .padding(90)
+        HStack {
+            Spacer()
             
-            GeometryReader { geometry in
-                VStack {
-                    ForEach(0..<16, id: \.self) { i in
-                        HStack {
-                            ForEach(0..<16, id: \.self) { j in
-                                SquareComponent(corParaPintar: $curColor,
-                                                reset: $reset,
-                                                posicao: (linha: i, coluna: j),
-                                                pixelGrid: $gridColors, numberGrid: $gridNumbers, viewModel: viewModel)
+            VStack {
+
+                ZStack {
+                    Rectangle()
+                        .frame(width: 105, height: 400)
+                        .foregroundColor(Color.azulToolBar.opacity(0.75))
+                        .cornerRadius(6)
+                        .padding(.trailing, 50)
+                    
+                    VStack (spacing: 30){
+                    
+                        Button {
+                            locked.toggle()
+                        } label: {
+                            VStack {
+                                Image(locked == false ? "lockOpen" : "lockClosed")
+                                Text(locked == false ? "Bloquear" : "Desbloquear")
+                                    .foregroundColor(.black)
+                                    .font(.custom("Quantico-Regular", size: 15))
+                            }
+                        }
+                        
+                        Button {
+                            if(previousGridColors.count > 0){
+                                if(previousGridColors[0] != [[]]){
+                                    gridColors = previousGridColors[0]
+                                    previousGridColors.removeAll()
+                                }
+                            }
+                        } label: {
+                            VStack {
+                                Image("desfazer")
+                                    .opacity(previousGridColors.count > 0 ? 1 : 0.3)
+                                Text("Desfazer")
+                                    .foregroundColor(previousGridColors.count > 0 ? .black : .gray)
+                                    .font(.custom("Quantico-Regular", size: 15))
+                            }
+                        }.disabled(previousGridColors.count > 0 ? false : true)
+                        
+                        
+                        Spacer()
+                        
+                        Button("Apagar") {
+                            savePreviousAction()
+                            gridColors = Array(repeating: Array(repeating: .white, count: 16), count: 16)
+                        }.foregroundColor(Color.red)
+                            .font(.custom("Quantico-Regular", size: 18))
+                    }.padding(.trailing, 50)
+                        .frame(height: 335)
+                }
+
+            }
+            
+            VStack {
+                Spacer()
+                HStack {
+                    
+                    //Spacer()
+                    
+                    botaoSalvar(action: {
+                        
+                        if(!estaSalvo){
+                            mostrarAlertaSalvar = true
+                        } else {
+                            viewModel.editarDesenho(pixels: gridColors, desenho: viewModel.desenhos[desenhoSalvoID])
+                            desenhoSalvoAlerta = true
+                        }
+                        
+                    })
+
+                }
+                .padding(.leading, 400)
+                
+                GeometryReader { geometry in
+                    VStack {
+                        ForEach(0..<16, id: \.self) { i in
+                            HStack {
+                                ForEach(0..<16, id: \.self) { j in
+                                    SquareComponent(corParaPintar: $curColor,
+                                                    posicao: (linha: i, coluna: j),
+                                                    pixelGrid: $gridColors, numberGrid: $gridNumbers, viewModel: viewModel)
                                     .frame(width: squareSize, height: squareSize)
                                     .border(Color.gray, width: 0.3)
                                     .padding(-3.95)
+                                }
                             }
                         }
                     }
-                }
-                .gesture(
-                    
-                    DragGesture(minimumDistance: 0)
-                        .onChanged { value in
-                            painting = true
-                            let location = value.location
-                            let column = Int(location.x / squareSize)
-                            let row = Int(location.y / squareSize)
-                            
-                            if row >= 0, row < 16, column >= 0, column < 16 {
-                                if locked == true {
-                                    if gridColors[row][column] == Color.white {
+                    .gesture(
+                        
+                        DragGesture(minimumDistance: 0)
+                            .onChanged { value in
+                                painting = true
+                                let location = value.location
+                                let column = Int(location.x / squareSize)
+                                let row = Int(location.y / squareSize)
+                                
+                                if row >= 0, row < 16, column >= 0, column < 16 {
+                                    if locked == true {
+                                        if gridColors[row][column] == Color.white {
+                                            if(!premadeDrawing){
+                                                savePreviousAction()
+                                                gridColors[row][column] = curColor
+                                            } else {
+                                                if(viewModel.getColorID(_color: curColor) == gridNumbers[row][column])
+                                                {
+                                                    savePreviousAction()
+                                                    gridColors[row][column] = curColor
+                                                }
+                                            }
+                                        }
+                                    } else {
                                         if(!premadeDrawing){
+                                            savePreviousAction()
                                             gridColors[row][column] = curColor
                                         } else {
                                             if(viewModel.getColorID(_color: curColor) == gridNumbers[row][column])
                                             {
+                                                savePreviousAction()
                                                 gridColors[row][column] = curColor
                                             }
                                         }
                                     }
-                                } else {
-                                    if(!premadeDrawing){
-                                        gridColors[row][column] = curColor
-                                    } else {
-                                        if(viewModel.getColorID(_color: curColor) == gridNumbers[row][column])
-                                        {
-                                            gridColors[row][column] = curColor
-                                        }
-                                    }
                                 }
                             }
-                        }
-                        .onEnded { _ in
-                            painting = false
-                        }
-                )
-            }
-            .frame(width: squareSize * 16, height: squareSize * 16)
-            
-            HStack {
-                Button("", systemImage: locked == false ? "lock.open" : "lock") {
-                    locked.toggle()
+                            .onEnded { _ in
+                                painting = false
+                            }
+                    )
                 }
+                .frame(width: squareSize * 16, height: squareSize * 16)
                 
-                Spacer()
-                    .frame(width: 320)
-                
-                Button("", systemImage: "trash") {
-                    reset.toggle()
-                    gridColors = Array(repeating: Array(repeating: .white, count: 16), count: 16)
-                }
-            }
-            
-            ZStack {
-                Rectangle()
-                    .frame(width: 300, height: 75)
-                    .foregroundColor(.gray.opacity(0.2))
-                    .cornerRadius(6)
-                ScrollView(.horizontal, showsIndicators: false){
+                ZStack {
+                    Rectangle()
+                        .frame(width: 550, height: 105)
+                        .foregroundColor(Color.azulToolBar.opacity(0.75))
+                        .cornerRadius(6)
+                    
                     HStack {
                         ForEach(0..<colorPalette.count){ i in
                             PalleteSquare(color: colorPalette[i], curColor: $curColor, viewModel: viewModel)
@@ -145,30 +190,51 @@ struct DesenhoView: View {
                                     if(viewModel.getColorID(_color: colorPalette[i]) != -1){
                                         Text("\(viewModel.getColorID(_color: colorPalette[i]))")
                                             .foregroundStyle(viewModel.getColorID(_color: colorPalette[i]) == 0 ? Color.white : Color.black)
+                                            .font(.custom("Quantico-Regular", size: 16))
                                     }
                                     
-                                }
+                                }.padding(.horizontal, 5)
                             
                         }
                         
-                    }
-                }.frame(width: 275)
+                    }.frame(width: 505)
+                    
+                }.padding(.top, 30)
+                Spacer()
             }
-        }
-        .alert("Salvar Desenho", isPresented: $mostrarAlertaSalvar) {
-            TextField("Título do desenho", text: $tituloDesenho)
-            Button("Cancelar", role: .cancel) {}
-            Button("Salvar") {
-                viewModel.salvarDesenho(titulo: tituloDesenho, pixels: gridColors, premadeID: Int64(premadeID))
-                tituloDesenho = ""
-                dismiss()
+            .alert("Salvar Desenho", isPresented: $mostrarAlertaSalvar) {
+                TextField("Título do desenho", text: $tituloDesenho)
+                Button("Cancelar", role: .cancel) {}
+                Button("Salvar") {
+                    viewModel.salvarDesenho(titulo: tituloDesenho, pixels: gridColors, premadeID: Int64(premadeID))
+                    tituloDesenho = ""
+                    dismiss()
+                }
             }
-        }
-        .alert("Desenho salvo", isPresented: $desenhoSalvoAlerta) {
-            Button("OK", role: .cancel) {
-                dismiss()
+            .alert("Desenho salvo", isPresented: $desenhoSalvoAlerta) {
+                Button("OK", role: .cancel) {
+                    dismiss()
+                }
+            }
+            .onAppear(){
+                previousGridColors.removeAll()
             }
             
+            Spacer()
+        }.padding(.trailing, 125)
+    }
+    
+    func savePreviousAction(){
+        if(previousGridColors.count == 0){
+            previousGridColors.append(gridColors)
+        } else {
+            if(previousGridColors[previousGridColors.count - 1] != gridColors){
+                previousGridColors.append(gridColors)
+            }
+        }
+        if(previousGridColors.count > 2){
+            previousGridColors.remove(at: 0)
         }
     }
 }
+

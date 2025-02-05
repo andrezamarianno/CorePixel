@@ -12,20 +12,18 @@ struct PalleteSquare: View {
     @Binding var curColor: Color
     var viewModel : CorePixelViewModel
     
+    var selectedSize : CGFloat = 60
+    var notSelectedSize : CGFloat = 45
+    
     var body: some View {
         ZStack {
             Rectangle()
-                .frame(width: curColor == color ? 50 : 40, height: curColor == color ? 50 : 40)
+                .frame(width: curColor == color ? selectedSize : notSelectedSize, height: curColor == color ? selectedSize : notSelectedSize)
                 .foregroundColor(color)
                 .onTapGesture {
                     curColor = color
                 }
                 .cornerRadius(5)
-            
-            
-            //.border(Color.black.opacity(curColor == color ? 1 : 0))
-            
-            //Text(String(viewModel.getColorID(_color: color)))
             
         }
     }
