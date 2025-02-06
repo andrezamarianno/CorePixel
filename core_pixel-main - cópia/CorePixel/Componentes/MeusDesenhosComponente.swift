@@ -1,39 +1,89 @@
-
-
 import SwiftUI
 
 struct MeusDesenhosComponente: View {
+    @ObservedObject var viewModel: CorePixelViewModel
+    @State private var navigateToListaDeDesenhos = false
+    
+    let columns = [
+        GridItem(.fixed(60), spacing: 30),
+        GridItem(.fixed(60), spacing: 30),
+        GridItem(.fixed(60), spacing: 30),
+        GridItem(.fixed(60), spacing: 30),
+        GridItem(.fixed(60), spacing: 30)
+    ]
+    
     var body: some View {
-       
-        ZStack{
-           
+        NavigationStack {
+            ZStack {
                 Rectangle()
                     .frame(width: 580, height: 330)
                     .cornerRadius(10)
                     .foregroundColor(Color("fundoComp"))
-            VStack{
-                Spacer()
-                Rectangle()
-                    .frame(width: 580, height: 80)
-                    .cornerRadius(5)
-                    .foregroundColor(Color("AzulCatalogo"))
-            }
-            .padding(.bottom, 230)
-            VStack{
-                Spacer()
-                HStack{
-                    Text("Meus desenhos")
-                        .font(.custom("Quantico-Regular", size: 30))
-                        .foregroundStyle(Color("BW"))
+                    .onTapGesture {
+                    navigateToListaDeDesenhos = true
+                     }
+                
+                VStack {
+                    HStack {
+                        LazyVGrid(columns: columns, spacing: 20) {
+                            ForEach(0..<15) { index in
+                                if index < viewModel.desenhos.count {
+                                    let desenho = viewModel.desenhos[viewModel.desenhos.count - 1 - index]
+                                    VStack {
+                                        MiniPixelPreview(pixels: viewModel.carregarPixels(from: desenho))
+                                            .frame(width: 60, height: 60)
+                                            .cornerRadius(5)
+                                            .onTapGesture {
+                                                navigateToListaDeDesenhos = true
+                                            }
+                                    }
+                                } else {
+                                    Rectangle()
+                                        .fill(Color.white)
+                                        .frame(width: 60, height: 60)
+                                        .cornerRadius(5)
+                                        .onTapGesture {
+                                            navigateToListaDeDesenhos = true
+                                        }
+                                }
+                            }
+                        }
+                        .frame(width: 400)
+                        .padding(.leading, 150)
+                        .padding(.top, 50)
+                        Spacer()
+                    }
+                    
                     Spacer()
-                        .frame(width: 300)
+                    
+                    Rectangle()
+                        .frame(width: 580, height: 80)
+                        .cornerRadius(5)
+                        .foregroundColor(Color("AzulCatalogo"))
+                        .overlay(
+                            HStack {
+                                Text("Meus desenhos")
+                                    .font(.custom("Quantico-Regular", size: 30))
+                                    .foregroundStyle(Color("BW"))
+                                    .padding(.leading)
+                                Spacer()
+                            }
+                        )
+                        .onTapGesture {
+                        navigateToListaDeDesenhos = true
+                        }
                 }
-            }.padding(250)
-
             }
+            .navigationDestination(isPresented: $navigateToListaDeDesenhos) {
+                ListaDeDesenhos(viewModel: viewModel)
+            }
+        }
+        .onAppear {
+                   viewModel.carregarDesenho()
+               }
     }
 }
 
 #Preview {
-    MeusDesenhosComponente()
+    MeusDesenhosComponente(viewModel: CorePixelViewModel())
 }

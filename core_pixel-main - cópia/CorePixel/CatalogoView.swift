@@ -3,7 +3,7 @@ import SwiftUI
 
 struct CatalogoView: View {
     
-    @ObservedObject var viewModel: CorePixelViewModel
+    @StateObject var viewModel: CorePixelViewModel
     
     @State private var selectedGrid: [[Color]] = Array(repeating: Array(repeating: .white, count: 16), count: 16)
     
@@ -11,53 +11,109 @@ struct CatalogoView: View {
     
     let titulos = ["Coração", "Pizza", "Tomate"]
     
+    let columns = [
+        GridItem(.flexible(), spacing: 20)
+        
+    ]
+    
     var body: some View {
         
         
-        NavigationStack {
             
-            VStack{
-                Image("CorePixel")
-                    .resizable()
-                    .frame(width: 400, height: 80)
-                    .padding(20)
+            NavigationStack {
                 
-                HStack{
+                ZStack {
+                    Rectangle()
+                        .foregroundStyle(Color("background"))
+                        .zIndex(1.5)
+                        .ignoresSafeArea()
+                
+                VStack{
+                    Image("CorePixel")
+                        .resizable()
+                        .frame(width: 500, height: 100)
+                        .padding(50)
                     
                     
-                    Text("Catálogo")
-                        .font(.custom("Quantico-Regular", size: 40))
-                        .padding(70)
+                    HStack{
+                        
+                        
+                        Text("Catálogo")
+                            .font(.custom("Quantico-Regular", size: 40))
+                            .padding(70)
+                            .padding(.top, -100)
+                            .offset(x: 30)
+                        
+                        Spacer()
+                        
+                        
+                    }
+  
+                        HStack{
+                            LazyHGrid(rows: columns, spacing: 80) {
+                                
+                                ForEach(0..<3, id: \.self) { index in
+                                    NavigationLink(destination: DesenhoView(viewModel: viewModel, initialGrid: selectedGrid, initialDrawing: catalogoViewModel.listaDesenhos[index], premade: true, _premadeID: index, _estaSalvo: false, _desenhoSalvoID: 0)) {
+                                        VStack {
+                                            MiniPixelPreview(pixels: catalogoViewModel.converterParaPixels(catalogoViewModel.listaDesenhos[index]))
+                                                .frame(height: 250)
+                                                .frame(width: 250)
+                                                .cornerRadius(10)
+                                            
+                                            ZStack{
+
+                                                  Rectangle()
+                                                .frame(width: 250, height: 50)
+                                                .cornerRadius(5)
+                                                .foregroundColor(Color("AzulCatalogo"))
+                                                .padding(.top, -20)
+                                                
+                                                HStack {
+                                                Text(titulos[index])
+                                                .font(.custom("Quantico-Regular", size: 20))
+                                                .foregroundColor(.black)
+                                                .padding(.leading, 20)
+                                                Spacer()
+                                              }
+                                                .padding(.top, -20)
+                                            }
+                                        }
+                                    }
+                                }
+                            } .offset(x: 90, y: -40)
+                            Spacer()
+                             
+                        }
+                    
+                   
+                    HStack {
+                        MeusDesenhosComponente(viewModel: viewModel)
+                            .padding(.trailing,15)
+
+                        Spacer()
+
+                     
+                            NavigationLink(destination: DesenhoView(viewModel: viewModel, initialGrid: selectedGrid, initialDrawing: catalogoViewModel.listaDesenhos[3], premade: false, _premadeID: 3, _estaSalvo: false, _desenhoSalvoID: 0)) {
+                                MaoLivreComponente()
+                                    .frame(width: 580, height: 330)
+                                    .padding(.trailing, 10)
+                                    .offset(x: -35, y: 10)
+                            }
+                            
+                        
+                        .padding()
+                    }
+                    .padding()
                     
                     Spacer()
-                    
                 }
                 
-                VStack {
-                    NavigationLink(destination: DesenhoView(viewModel: viewModel, initialGrid: selectedGrid, initialDrawing: catalogoViewModel.listaDesenhos[0], premade: true, _premadeID: 0, _estaSalvo: false, _desenhoSalvoID: 0)){
-                        Text("Desenho 1")
-                    }
-                    NavigationLink(destination: DesenhoView(viewModel: viewModel, initialGrid: selectedGrid, initialDrawing: catalogoViewModel.listaDesenhos[1], premade: true, _premadeID: 1, _estaSalvo: false, _desenhoSalvoID: 0)){
-                        Text("Desenho 2")
-                    }
-                    NavigationLink(destination: DesenhoView(viewModel: viewModel, initialGrid: selectedGrid, initialDrawing: catalogoViewModel.listaDesenhos[2], premade: true, _premadeID: 2, _estaSalvo: false, _desenhoSalvoID: 0)){
-                        Text("Desenho 3")
-                    }
-                    NavigationLink(destination: DesenhoView(viewModel: viewModel, initialGrid: selectedGrid, initialDrawing: catalogoViewModel.listaDesenhos[3], premade: false, _premadeID: 3, _estaSalvo: false, _desenhoSalvoID: 0)){
-                        Text("Desenho livre")
-                    }
-                    
-                    NavigationLink(destination: ListaDeDesenhos(viewModel: viewModel)){
-                        Text("Meus Desenhos")
-                    }
-
-                }
-
+                .zIndex(10)
                 
-                Spacer()
             }
-            
-            
+                .onAppear {
+                              viewModel.carregarDesenho()
+                          }
         }
     }
 }
