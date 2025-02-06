@@ -9,7 +9,7 @@ struct CatalogoView: View {
     
     let catalogoViewModel : CatalogoViewModel = CatalogoViewModel()
     
-    let titulos = ["Coração", "Pizza", "Tomate"]
+    let titulos = ["Coração", "Pizza", "Tomate", "Brasil"]
     
     let columns = [
         GridItem(.flexible(), spacing: 20)
@@ -52,9 +52,9 @@ struct CatalogoView: View {
                     }
   
                         HStack{
-                            LazyHGrid(rows: columns, spacing: 80) {
+                            LazyHGrid(rows: columns, spacing: 72) {
                                 
-                                ForEach(0..<3, id: \.self) { index in
+                                ForEach(0..<4, id: \.self) { index in
                                     NavigationLink(destination: DesenhoView(viewModel: viewModel, initialGrid: selectedGrid, initialDrawing: catalogoViewModel.listaDesenhos[index], premade: true, _premadeID: index, _estaSalvo: false, _desenhoSalvoID: 0)) {
                                         VStack {
                                             MiniPixelPreview(pixels: catalogoViewModel.converterParaPixels(catalogoViewModel.listaDesenhos[index]))
@@ -82,7 +82,7 @@ struct CatalogoView: View {
                                         }
                                     }
                                 }
-                            } .offset(x: 90, y: -40)
+                            } .offset(x: 73, y: -40)
                             Spacer()
                              
                         }
@@ -95,7 +95,7 @@ struct CatalogoView: View {
                         Spacer()
 
                      
-                            NavigationLink(destination: DesenhoView(viewModel: viewModel, initialGrid: selectedGrid, initialDrawing: catalogoViewModel.listaDesenhos[3], premade: false, _premadeID: 3, _estaSalvo: false, _desenhoSalvoID: 0)) {
+                            NavigationLink(destination: DesenhoView(viewModel: viewModel, initialGrid: selectedGrid, initialDrawing: catalogoViewModel.listaDesenhos[4], premade: false, _premadeID: 4, _estaSalvo: false, _desenhoSalvoID: 0)) {
                                 MaoLivreComponente()
                                     .frame(width: 580, height: 330)
                                     .padding(.trailing, 10)
@@ -120,6 +120,6 @@ struct CatalogoView: View {
     }
 }
 
-#Preview {
-    CatalogoView(viewModel: CorePixelViewModel())
-}
+//#Preview {
+//    CatalogoView(viewModel: CorePixelViewModel())
+//}
