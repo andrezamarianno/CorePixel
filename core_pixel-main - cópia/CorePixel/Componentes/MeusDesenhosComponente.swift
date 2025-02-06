@@ -42,6 +42,7 @@ struct MeusDesenhosComponente: View {
                                         .fill(Color.white)
                                         .frame(width: 60, height: 60)
                                         .cornerRadius(5)
+                                        .opacity(0.5)
                                         .onTapGesture {
                                             navigateToListaDeDesenhos = true
                                         }
@@ -78,6 +79,7 @@ struct MeusDesenhosComponente: View {
                 ListaDeDesenhos(viewModel: viewModel)
             }
         }
+        .navigationBarBackButtonHidden(true)
         .onAppear {
                    viewModel.carregarDesenho()
                }

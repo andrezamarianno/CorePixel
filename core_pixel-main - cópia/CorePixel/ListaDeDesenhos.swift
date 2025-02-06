@@ -20,7 +20,7 @@ struct ListaDeDesenhos: View {
 
     var catalogoViewModel : CatalogoViewModel = CatalogoViewModel()
 
-    
+    @Environment(\.dismiss) var dismiss
     @State var isPremade : Bool = false
     @State var premadeID : Int64 = 0
     
@@ -42,26 +42,36 @@ struct ListaDeDesenhos: View {
             
             
             VStack {
-                HStack{
-                    Text("Meus desenhos")
-                        .bold()
-                        .font(.custom("Quantico-Regular", size: 30))
-                        .padding(50)
+                    HStack {
+                        Button(action: {
+                            dismiss() // Agora o botão realmente volta
+                        }) {
+                            Image(systemName: "chevron.left") // Ícone de voltar
+                                .foregroundColor(.black)
+                                .font(.system(size: 30, weight: .bold))
+                        }
+                        .padding(.leading, 20) // Ajuste para espaçamento
+                        
+                        Text("Meus desenhos")
+                            .bold()
+                            .font(.custom("Quantico-Regular", size: 30))
+                            .padding(50)
+                        Spacer()
+                    }
                     Spacer()
-                    
                 }
-                Spacer()
-            }
-            .zIndex(5.0)
+                .zIndex(5.0)
             
             
             
             
             
             NavigationStack {
-                
+                Spacer()
+                    .frame(height: 100)
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 70) {
+                       
                         ForEach(viewModel.desenhos) { desenhando in
                             ZStack {
                                 
@@ -149,7 +159,8 @@ struct ListaDeDesenhos: View {
                 
                 
             }
-            .navigationTitle("Meus desenhos")
+            .navigationBarBackButtonHidden(true)
+//            .navigationTitle("Meus desenhos")
             .navigationDestination(isPresented: $vaiParaContent) {
                 if let grid = selectedGrid {
                     DesenhoView(viewModel: viewModel, initialGrid: grid, initialDrawing: catalogoViewModel.listaDesenhos[Int(premadeID)], premade: isPremade, _premadeID: 3, _estaSalvo: true, _desenhoSalvoID: desenhoSalvoID)

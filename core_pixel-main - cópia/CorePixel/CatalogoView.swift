@@ -116,7 +116,11 @@ struct CatalogoView: View {
                 .onAppear {
                               viewModel.carregarDesenho()
                           }
+                
         }
+            .navigationBarBackButtonHidden(true)
+        
+           
     }
 }
 
