@@ -1,10 +1,3 @@
-//
-//  MaoLivreComponente.swift
-//  CorePixel
-//
-//  Created by ANDREZA MARIANNO UCHOA on 03/02/25.
-//
-
 import SwiftUI
 
 struct MaoLivreComponente: View {
@@ -14,14 +7,14 @@ struct MaoLivreComponente: View {
           
             
             Rectangle()
-                .frame(width: 750, height: 250)
+                .frame(width: 580, height: 330)
                 .cornerRadius(10)
                 .foregroundColor(Color("AzulCatalogo"))
        
                 Spacer()
                 Image("pixelsAmao")
                 .resizable()
-                .frame(width: 750, height: 200)
+                .frame(width: 580, height: 330)
      
             VStack{
                 Spacer()
