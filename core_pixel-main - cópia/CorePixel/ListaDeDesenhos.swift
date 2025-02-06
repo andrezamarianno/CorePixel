@@ -33,7 +33,9 @@ struct ListaDeDesenhos: View {
         ZStack {
             
             Rectangle()
-                .foregroundStyle(Color("background"))
+                .foregroundStyle(
+                    LinearGradient(colors: [Color(red: 0.8705882352941177, green: 0.9372549019607843, blue: 1), Color(red: 0.9490196078431372, green: 0.8588235294117647, blue: 1)], startPoint: .top, endPoint: .bottom)
+                )
                 .zIndex(1.5)
                 .ignoresSafeArea()
             
