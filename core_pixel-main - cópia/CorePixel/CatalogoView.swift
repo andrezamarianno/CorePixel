@@ -1,3 +1,4 @@
+// Ana Jamas, Andreza Marianno, Guilherme Fabbri, Heitor Ivaza
 
 import SwiftUI
 
@@ -123,7 +124,3 @@ struct CatalogoView: View {
            
     }
 }
-
-//#Preview {
-//    CatalogoView(viewModel: CorePixelViewModel())
-//}

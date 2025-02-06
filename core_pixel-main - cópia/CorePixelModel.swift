@@ -1,3 +1,4 @@
+// Ana Jamas, Andreza Marianno, Guilherme Fabbri, Heitor Ivaza
 
 import SwiftUI
 import CoreData

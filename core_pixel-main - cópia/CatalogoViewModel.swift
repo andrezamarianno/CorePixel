@@ -1,9 +1,4 @@
-//
-//  CatalogoViewModel.swift
-//  CorePixel
-//
-//  Created by HEITOR IVAZA LOPES on 03/02/25.
-//
+// Ana Jamas, Andreza Marianno, Guilherme Fabbri, Heitor Ivaza
 
 import Foundation
 import SwiftUI

@@ -1,3 +1,5 @@
+// Ana Jamas, Andreza Marianno, Guilherme Fabbri, Heitor Ivaza
+
 import SwiftUI
 
 struct DesenhoView: View {
@@ -56,9 +58,9 @@ struct DesenhoView: View {
                         Spacer()
                             .frame(width: 80)
                         Button(action: {
-                            dismiss() // Agora o botão realmente volta
+                            dismiss()
                         }) {
-                            Image(systemName: "chevron.left") // Ícone de voltar
+                            Image(systemName: "chevron.left")
                                 .foregroundColor(.black)
                                 .font(.system(size: 30, weight: .bold))
                         }
@@ -128,8 +130,6 @@ struct DesenhoView: View {
                     VStack {
                         Spacer()
                         HStack {
-                            
-                            //Spacer()
                             
                             botaoSalvar(action: {
                                 

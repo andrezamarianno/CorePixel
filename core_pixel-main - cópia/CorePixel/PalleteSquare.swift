@@ -1,9 +1,4 @@
-//
-//  PalleteSquare.swift
-//  ko[wqkopafkopdwa
-//
-//  Created by HEITOR IVAZA LOPES on 29/01/25.
-//
+// Ana Jamas, Andreza Marianno, Guilherme Fabbri, Heitor Ivaza
 
 import SwiftUI
 

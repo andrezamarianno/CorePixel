@@ -1,9 +1,5 @@
-//
-//  CorePixelApp.swift
-//  CorePixel
-//
-//  Created by HEITOR IVAZA LOPES on 29/01/25.
-//
+// Ana Jamas, Andreza Marianno, Guilherme Fabbri, Heitor Ivaza
+
 import SwiftUI
 
 @main
@@ -16,7 +12,5 @@ struct YourAppName: App {
             CatalogoView(viewModel: viewModel)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
-        
-        
     }
 }

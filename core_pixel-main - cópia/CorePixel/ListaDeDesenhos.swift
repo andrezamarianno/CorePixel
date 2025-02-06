@@ -1,3 +1,5 @@
+// Ana Jamas, Andreza Marianno, Guilherme Fabbri, Heitor Ivaza
+
 import SwiftUI
 import CoreData
 
@@ -44,13 +46,13 @@ struct ListaDeDesenhos: View {
             VStack {
                     HStack {
                         Button(action: {
-                            dismiss() // Agora o botão realmente volta
+                            dismiss()
                         }) {
-                            Image(systemName: "chevron.left") // Ícone de voltar
+                            Image(systemName: "chevron.left")
                                 .foregroundColor(.black)
                                 .font(.system(size: 30, weight: .bold))
                         }
-                        .padding(.leading, 20) // Ajuste para espaçamento
+                        .padding(.leading, 20)
                         
                         Text("Meus desenhos")
                             .bold()
@@ -160,7 +162,6 @@ struct ListaDeDesenhos: View {
                 
             }
             .navigationBarBackButtonHidden(true)
-//            .navigationTitle("Meus desenhos")
             .navigationDestination(isPresented: $vaiParaContent) {
                 if let grid = selectedGrid {
                     DesenhoView(viewModel: viewModel, initialGrid: grid, initialDrawing: catalogoViewModel.listaDesenhos[Int(premadeID)], premade: isPremade, _premadeID: 3, _estaSalvo: true, _desenhoSalvoID: desenhoSalvoID)
