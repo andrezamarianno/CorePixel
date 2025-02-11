@@ -16,7 +16,7 @@
 		4AD5051D2D51479900C979D5 /* MaoLivreComponente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5051C2D51479900C979D5 /* MaoLivreComponente.swift */; };
 		4AD5051F2D5147CC00C979D5 /* MeusDesenhosComponente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5051E2D5147CC00C979D5 /* MeusDesenhosComponente.swift */; };
 		4AD505252D51483500C979D5 /* CatalogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD505242D51483500C979D5 /* CatalogoView.swift */; };
-		4AF0C5FA2D554E3E00B4320D /* Quantico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AF0C5F92D554E3E00B4320D /* Quantico-Regular.ttf */; };
+		BE7F76E22D5BE54E0015D749 /* Quantico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE7F76E12D5BE54E0015D749 /* Quantico-Regular.ttf */; };
 		BE98A3252D53D63700634A0E /* DesenhoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98A3242D53D63700634A0E /* DesenhoView.swift */; };
 		BE9F2E3E2D4AAE58008C3422 /* CorePixelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F2E3D2D4AAE58008C3422 /* CorePixelApp.swift */; };
 		BE9F2E402D4AAE58008C3422 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F2E3F2D4AAE58008C3422 /* ContentView.swift */; };
@@ -37,7 +37,7 @@
 		4AD5051C2D51479900C979D5 /* MaoLivreComponente.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaoLivreComponente.swift; sourceTree = "<group>"; };
 		4AD5051E2D5147CC00C979D5 /* MeusDesenhosComponente.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeusDesenhosComponente.swift; sourceTree = "<group>"; };
 		4AD505242D51483500C979D5 /* CatalogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogoView.swift; sourceTree = "<group>"; };
-		4AF0C5F92D554E3E00B4320D /* Quantico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quantico-Regular.ttf"; path = "../../../Downloads/Quantico/Quantico-Regular.ttf"; sourceTree = "<group>"; };
+		BE7F76E12D5BE54E0015D749 /* Quantico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quantico-Regular.ttf"; path = "../../../Downloads/Quantico-Regular.ttf"; sourceTree = "<group>"; };
 		BE98A3242D53D63700634A0E /* DesenhoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesenhoView.swift; sourceTree = "<group>"; };
 		BE9F2E3A2D4AAE58008C3422 /* CorePixel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CorePixel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE9F2E3D2D4AAE58008C3422 /* CorePixelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorePixelApp.swift; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 		BE9F2E312D4AAE58008C3422 = {
 			isa = PBXGroup;
 			children = (
-				4AF0C5F92D554E3E00B4320D /* Quantico-Regular.ttf */,
+				BE7F76E12D5BE54E0015D749 /* Quantico-Regular.ttf */,
 				BEAE8EBE2D51541C0048A5F6 /* CatalogoViewModel.swift */,
 				4A8E27C52D4C0EF20013AB14 /* CorePixelModel.swift */,
 				4A8E27C72D4C11970013AB14 /* CorePixelViewModel.swift */,
@@ -177,7 +177,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AF0C5FA2D554E3E00B4320D /* Quantico-Regular.ttf in Resources */,
+				BE7F76E22D5BE54E0015D749 /* Quantico-Regular.ttf in Resources */,
 				BE9F2E462D4AAE59008C3422 /* Preview Assets.xcassets in Resources */,
 				BE9F2E422D4AAE59008C3422 /* Assets.xcassets in Resources */,
 			);

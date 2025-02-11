@@ -1,4 +1,6 @@
+// GITHUB: https://github.com/andrezamarianno/CorePixel
 // Ana Jamas, Andreza Marianno, Guilherme Fabbri, Heitor Ivaza
+// CatalogoViewModel //
 
 import Foundation
 import SwiftUI

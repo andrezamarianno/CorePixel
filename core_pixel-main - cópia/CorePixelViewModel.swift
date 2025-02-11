@@ -1,4 +1,5 @@
 // Ana Jamas, Andreza Marianno, Guilherme Fabbri, Heitor Ivaza
+// CorePixelViewModel //
 
 import SwiftUI
 import CoreData
