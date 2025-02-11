@@ -92,6 +92,7 @@ struct CatalogoView: View {
                     HStack {
                         MeusDesenhosComponente(viewModel: viewModel)
                             .padding(.trailing,15)
+                            .navigationBarBackButtonHidden(true)
 
                         Spacer()
 

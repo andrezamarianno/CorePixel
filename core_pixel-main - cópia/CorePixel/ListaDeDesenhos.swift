@@ -165,6 +165,7 @@ struct ListaDeDesenhos: View {
             .navigationDestination(isPresented: $vaiParaContent) {
                 if let grid = selectedGrid {
                     DesenhoView(viewModel: viewModel, initialGrid: grid, initialDrawing: catalogoViewModel.listaDesenhos[Int(premadeID)], premade: isPremade, _premadeID: 3, _estaSalvo: true, _desenhoSalvoID: desenhoSalvoID)
+                       // .navigationBarBackButtonHidden(true)
                 }
             }
             .onAppear {
