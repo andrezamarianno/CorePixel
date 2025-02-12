@@ -20,37 +20,49 @@ struct CatalogoView: View {
     
     var body: some View {
         
-            NavigationStack {
+        NavigationStack {
+            
+            ZStack {
+                Rectangle()
+                    .foregroundStyle(
+                        LinearGradient(colors: [Color(red: 0.8705882352941177, green: 0.9372549019607843, blue: 1), Color(red: 0.9490196078431372, green: 0.8588235294117647, blue: 1)], startPoint: .top, endPoint: .bottom)
+                    )
+                    .zIndex(1.5)
+                    .ignoresSafeArea()
                 
-                ZStack {
-                    Rectangle()
-                        .foregroundStyle(
-                            LinearGradient(colors: [Color(red: 0.8705882352941177, green: 0.9372549019607843, blue: 1), Color(red: 0.9490196078431372, green: 0.8588235294117647, blue: 1)], startPoint: .top, endPoint: .bottom)
-                        )
-                        .zIndex(1.5)
-                        .ignoresSafeArea()
+
                 
-                VStack{
-                    Image("CorePixel")
-                        .resizable()
-                        .frame(width: 500, height: 100)
-                        .padding(50)
-                    
-                    
-                    HStack{
+                
+                    VStack{
+                        Image("CorePixel")
+                            .resizable()
+                            .frame(width: 500, height: 100)
+                            .padding(50)
                         
+                     
+                        HStack{
+                            
+                            VStack {
+                                Text("Catálogo")
+                                    .font(.custom("Quantico-Regular", size: 40))
+                                    .padding(70)
+                                    .padding(.top, -100)
+                                   
+                          
+                            }
+                            Spacer()
+                            
+                            NavigationLink(destination: AboutView()) {
+                                Image(systemName: "info.circle")
+                                    .font(.title)
+                                    .foregroundStyle(Color.black)
+                            }
+                            .padding(.top, -170)
+                            .padding(.leading, -100)
+                            
+                            
+                        }
                         
-                        Text("Catálogo")
-                            .font(.custom("Quantico-Regular", size: 40))
-                            .padding(70)
-                            .padding(.top, -100)
-                            .offset(x: 30)
-                        
-                        Spacer()
-                        
-                        
-                    }
-  
                         HStack{
                             LazyHGrid(rows: columns, spacing: 72) {
                                 
@@ -63,20 +75,20 @@ struct CatalogoView: View {
                                                 .cornerRadius(10)
                                             
                                             ZStack{
-
-                                                  Rectangle()
-                                                .frame(width: 250, height: 50)
-                                                .cornerRadius(5)
-                                                .foregroundColor(Color("AzulCatalogo"))
-                                                .padding(.top, -20)
+                                                
+                                                Rectangle()
+                                                    .frame(width: 250, height: 50)
+                                                    .cornerRadius(5)
+                                                    .foregroundColor(Color("AzulCatalogo"))
+                                                    .padding(.top, -20)
                                                 
                                                 HStack {
-                                                Text(titulos[index])
-                                                .font(.custom("Quantico-Regular", size: 20))
-                                                .foregroundColor(.black)
-                                                .padding(.leading, 20)
-                                                Spacer()
-                                              }
+                                                    Text(titulos[index])
+                                                        .font(.custom("Quantico-Regular", size: 20))
+                                                        .foregroundColor(.black)
+                                                        .padding(.leading, 20)
+                                                    Spacer()
+                                                }
                                                 .padding(.top, -20)
                                             }
                                         }
@@ -84,18 +96,18 @@ struct CatalogoView: View {
                                 }
                             } .offset(x: 73, y: -40)
                             Spacer()
-                             
+                            
                         }
-                    
-                   
-                    HStack {
-                        MeusDesenhosComponente(viewModel: viewModel)
-                            .padding(.trailing,15)
-                            .navigationBarBackButtonHidden(true)
-
-                        Spacer()
-
-                     
+                        
+                        
+                        HStack {
+                            MeusDesenhosComponente(viewModel: viewModel)
+                                .padding(.trailing,15)
+                                .navigationBarBackButtonHidden(true)
+                            
+                            Spacer()
+                            
+                            
                             NavigationLink(destination: DesenhoView(viewModel: viewModel, initialGrid: selectedGrid, initialDrawing: catalogoViewModel.listaDesenhos[4], premade: false, _premadeID: 4, _estaSalvo: false, _desenhoSalvoID: 0)) {
                                 MaoLivreComponente()
                                     .frame(width: 580, height: 330)
@@ -103,24 +115,29 @@ struct CatalogoView: View {
                                     .offset(x: -35, y: 10)
                             }
                             
-                        
+                            
+                            .padding()
+                        }
                         .padding()
+                        
+                      
+                        
+                        
+                        Spacer()
                     }
-                    .padding()
+                
+
                     
-                    Spacer()
+                    .zIndex(10)
+                    
+                }
+                .onAppear {
+                    viewModel.carregarDesenho()
                 }
                 
-                .zIndex(10)
-                
             }
-                .onAppear {
-                              viewModel.carregarDesenho()
-                          }
-                
-        }
             .navigationBarBackButtonHidden(true)
+            
         
-           
     }
 }

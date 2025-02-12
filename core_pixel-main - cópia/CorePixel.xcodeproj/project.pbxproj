@@ -25,6 +25,7 @@
 		BE9F2E4D2D4AAE80008C3422 /* PalleteSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F2E4C2D4AAE80008C3422 /* PalleteSquare.swift */; };
 		BE9F2E4F2D4AAE99008C3422 /* SquareComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F2E4E2D4AAE99008C3422 /* SquareComponent.swift */; };
 		BEAE8EBF2D51541C0048A5F6 /* CatalogoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAE8EBE2D51541C0048A5F6 /* CatalogoViewModel.swift */; };
+		CE9924932D5D1DED0087A20A /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9924922D5D1DED0087A20A /* AboutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		BE9F2E4C2D4AAE80008C3422 /* PalleteSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalleteSquare.swift; sourceTree = "<group>"; };
 		BE9F2E4E2D4AAE99008C3422 /* SquareComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareComponent.swift; sourceTree = "<group>"; };
 		BEAE8EBE2D51541C0048A5F6 /* CatalogoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogoViewModel.swift; sourceTree = "<group>"; };
+		CE9924922D5D1DED0087A20A /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				4A5C16932D52819B00C97B59 /* MiniPixelPreview.swift */,
 				4AD505242D51483500C979D5 /* CatalogoView.swift */,
 				BE98A3242D53D63700634A0E /* DesenhoView.swift */,
+				CE9924922D5D1DED0087A20A /* AboutView.swift */,
 				4AD505192D5146ED00C979D5 /* Componentes */,
 				BE9F2E432D4AAE59008C3422 /* CorePixel.entitlements */,
 				BE9F2E412D4AAE59008C3422 /* Assets.xcassets */,
@@ -190,6 +193,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE9924932D5D1DED0087A20A /* AboutView.swift in Sources */,
 				4AD505252D51483500C979D5 /* CatalogoView.swift in Sources */,
 				4AD5051D2D51479900C979D5 /* MaoLivreComponente.swift in Sources */,
 				BE98A3252D53D63700634A0E /* DesenhoView.swift in Sources */,

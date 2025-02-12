@@ -59,24 +59,42 @@ struct DesenhoView: View {
                     HStack {
                         Spacer()
                             .frame(width: 80)
-                        Button(action: {
-                          //  dismiss()
-                            mostrarAlertaVoltar.toggle()
-                        }) {
-                            Image(systemName: "chevron.left")
-                                .foregroundColor(.black)
-                                .font(.system(size: 30, weight: .bold))
+                        
+                        if estaSalvo == false {
+                            Button(action: {
+                              //  dismiss()
+                                mostrarAlertaVoltar.toggle()
+                            }) {
+                                Image(systemName: "chevron.left")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 30, weight: .bold))
+                            }
+                            
+                            .alert(isPresented: $mostrarAlertaVoltar) {
+                                        Alert(
+                                            title: Text("Tem certeza que deseja voltar?"),
+                                            message: Text("Todo o seu progresso atual será perdido."),
+                                            primaryButton: .destructive(Text("Voltar")) {
+                                                dismiss()
+                                            },
+                                            secondaryButton: .cancel(Text("Cancelar"))
+                                        )
+                                    }
                         }
-                        .alert(isPresented: $mostrarAlertaVoltar) {
-                                    Alert(
-                                        title: Text("Tem certeza que deseja voltar?"),
-                                        message: Text("Todo o seu progresso atual será perdido."),
-                                        primaryButton: .destructive(Text("Voltar")) {
-                                            dismiss()
-                                        },
-                                        secondaryButton: .cancel(Text("Cancelar"))
-                                    )
-                                }
+                        
+                        else {
+                            Button(action: {
+                              dismiss()
+                                
+                            }) {
+                                Image(systemName: "chevron.left")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 30, weight: .bold))
+                            }
+                            
+                           
+                        }
+                     
                     }
                    
                     Spacer()
