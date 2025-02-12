@@ -47,8 +47,6 @@ struct CatalogoView: View {
                                     .font(.custom("Quantico-Regular", size: 40))
                                     .padding(70)
                                     .padding(.top, -100)
-                                   
-                          
                             }
                             Spacer()
                             
