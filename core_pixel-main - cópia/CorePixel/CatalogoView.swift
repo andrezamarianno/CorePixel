@@ -20,8 +20,6 @@ struct CatalogoView: View {
     
     var body: some View {
         
-        
-            
             NavigationStack {
                 
                 ZStack {

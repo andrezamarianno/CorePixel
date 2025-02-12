@@ -30,6 +30,7 @@ struct DesenhoView: View {
     
     @State private var tituloDesenho = ""
     @State private var mostrarAlertaSalvar = false
+    @State private var mostrarAlertaVoltar = false
     
     
     @ObservedObject var viewModel = CorePixelViewModel()
@@ -59,12 +60,23 @@ struct DesenhoView: View {
                         Spacer()
                             .frame(width: 80)
                         Button(action: {
-                            dismiss()
+                          //  dismiss()
+                            mostrarAlertaVoltar.toggle()
                         }) {
                             Image(systemName: "chevron.left")
                                 .foregroundColor(.black)
                                 .font(.system(size: 30, weight: .bold))
                         }
+                        .alert(isPresented: $mostrarAlertaVoltar) {
+                                    Alert(
+                                        title: Text("Tem certeza que deseja voltar?"),
+                                        message: Text("Todo o seu progresso atual será perdido."),
+                                        primaryButton: .destructive(Text("Voltar")) {
+                                            dismiss()
+                                        },
+                                        secondaryButton: .cancel(Text("Cancelar"))
+                                    )
+                                }
                     }
                    
                     Spacer()
@@ -117,7 +129,7 @@ struct DesenhoView: View {
                                 
                                 Spacer()
                                 
-                                Button("Apagar") {
+                                Button("Limpar") {
                                     savePreviousAction()
                                     gridColors = Array(repeating: Array(repeating: .white, count: 16), count: 16)
                                 }.foregroundColor(Color.red)
